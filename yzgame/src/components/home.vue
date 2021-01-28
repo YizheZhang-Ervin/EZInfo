@@ -8,7 +8,7 @@
         active-text-color="gold"
         default-active="A"
       >
-        <el-menu-item index="A"><a href="/#/main" target="iframe001">Home</a></el-menu-item>
+        <el-menu-item index="A">YZGame</el-menu-item>
         <el-submenu index="B">
           <template slot="title">Games</template>
           <el-menu-item index="1">
@@ -57,7 +57,7 @@ export default {
     setInterval(() => {
       this.checkVisibility();
     }, 1000);
-    document.getElementById("iframe001").src = "/#/main";
+    document.getElementById("iframe001").src = "/game1";
   },
   methods: {
     get: function () {

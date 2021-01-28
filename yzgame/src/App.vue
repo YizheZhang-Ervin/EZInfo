@@ -26,6 +26,7 @@ export default {
 
 .main{
     min-height:86vh;
+    background-color: #000;
 }
 
 .footer{
@@ -40,9 +41,14 @@ export default {
 .iframe{
     height: 86vh;
     width: 100vw;
+    border:none;
 }
 
 .el-menu-item,.el-submenu__title,.el-submenu__title:focus, .el-submenu__title:hover{
     font-size: 1.1em!important;
+}
+
+.el-menu.el-menu--horizontal {
+    border-bottom: none;
 }
 </style>

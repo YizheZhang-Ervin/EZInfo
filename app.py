@@ -23,13 +23,15 @@ def index():
         key = request.args.get('key', '')
         return render_template('index.html', data=key)
 
-@app.route('/game1', methods=['GET', 'POST'])
-def game1():
+@app.route('/<string:gamename>', methods=['GET', 'POST'])
+def gameChoice(gamename):
+    page = "game.html"
+    json = f"static/{gamename}/Build/Build.json"
     if request.method == 'GET':
-        return render_template('game1.html')
+        return render_template(page,gamename=gamename,json=json)
     elif request.method == 'POST':
         key = request.args.get('key', '')
-        return render_template('game1.html', data=key)
+        return render_template(page, data=key)
 
 # RESTful API Route
 class jsonAPI(Resource):
