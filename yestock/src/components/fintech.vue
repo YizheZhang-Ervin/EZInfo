@@ -60,7 +60,7 @@ export default {
   mounted() {},
   methods: {
     get: function () {
-      axios.get(`http://127.0.0.1:5000/api/fintech/`).then(
+      axios.get(`api/fintech/`).then(
         (response) => {
           if (response.data.error == "error") {
             console.log("backend error");
@@ -75,7 +75,7 @@ export default {
     },
     post: function () {
       axios
-        .post(`http://127.0.0.1:5000/api/fintech/`, {
+        .post(`api/fintech/`, {
           input: JSON.stringify(this.input),
         })
         .then(

@@ -100,7 +100,7 @@ export default {
     getTranslate: function () {
       axios
         .get(
-          `http://127.0.0.1:5000/api/translate/?sentence=${this.sentence}&fromlang=${this.fromlang}&tolang=${this.tolang}`
+          `/api/translate/?sentence=${this.sentence}&fromlang=${this.fromlang}&tolang=${this.tolang}`
         )
         .then(
           (response) => {
