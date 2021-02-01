@@ -5,9 +5,10 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
+  components: {
+  }
 }
 </script>
 
@@ -26,11 +27,10 @@ export default {
 
 .main{
     min-height:86vh;
-    background-color: #000;
 }
 
 .footer{
-    background-color:rgb(34, 28, 28);
+    background-color:#000;
     color:gold;
     min-height: 7vh;
     display: flex;
@@ -48,7 +48,7 @@ export default {
     font-size: 1.1em!important;
 }
 
-.el-menu.el-menu--horizontal {
-    border-bottom: none;
+.el-menu.el-menu--horizontal{
+    border-bottom: none!important;
 }
 </style>

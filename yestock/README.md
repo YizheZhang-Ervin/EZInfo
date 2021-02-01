@@ -1,4 +1,4 @@
-# yzgame
+# yestock
 
 ## Project setup
 ```

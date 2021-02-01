@@ -3,10 +3,10 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
 
-import Home  from './components/home.vue';
+import Index  from './components/index.vue';
 
 const routes=[
-    {path:'',component:Home},
+    {path:'',component:Index},
 ]
 
 
