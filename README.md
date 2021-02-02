@@ -1,13 +1,13 @@
-# YZGame  
+# YeStock
 YeStock 
   
 # Features 
 - Online Coding with output and charts  
 - FinTech Algorithms  
-- Translator   
 - Geolocation with location  
+- Translator   
+- Excel with IO/New/ComputeExpression  
 - VideoChat + Video Player with drag/drop + browser parameters  
-- Excel with IO/New/ComputeExpression
 - Group  
   
 # Architecture  

@@ -92,7 +92,7 @@ export default {
                 linkedin: "https://www.linkedin.com/in/yizhe-zhang/",
                 title: "Developer",
                 exp1: "FinTech",
-                exp2: "<p>Fish Group\
+                exp2: "<p>FISH Group\
                 </p><p>YeStock</p>",
                 exp3: "Python, JavaScript"
             }]
@@ -118,6 +118,7 @@ export default {
     background-color: white!important;
     color:black!important;
     font-weight: bold!important;
+    font-size: larger;
 }
 
 .flex-row{
