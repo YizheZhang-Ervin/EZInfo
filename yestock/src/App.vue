@@ -1,54 +1,103 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    <div id="backup">
+      <h1>Please use larger screen(>800*700) to browse this website</h1>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
-*{
-    margin: 0;
+@media(min-width:800px) and (min-height:700px){
+  #app{
+    display: block;
+  }
+  #backup{
+    display: none;
+  }
+}
+@media(max-width:800px){
+  #app{
+    display: none;
+  }
+  #backup{
+    display: block;
+  }
 }
 
-#app{
-    overflow: hidden;
+@media(max-height:700px){
+  #app{
+    display: none;
+  }
+  #backup{
+    display: block;
+  }
 }
 
-.header{
-    min-height: 7vh;
+#app::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  height: 7px;
+  width: 7px;
+}
+#app::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  background: gold;
+}
+#app::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 10px;
+  background: transparent;
 }
 
-.main{
-    min-height:86vh;
+* {
+  margin: 0;
 }
 
-.footer{
-    background-color:#000;
-    color:gold;
-    min-height: 7vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#app {
+  overflow: hidden;
 }
 
-.iframe{
-    height: 86vh;
-    width: 100vw;
-    border:none;
+.header {
+  min-height: 7vh;
 }
 
-.el-menu-item,.el-submenu__title,.el-submenu__title:focus, .el-submenu__title:hover{
-    font-size: 1.1em!important;
+.main {
+  min-height: 86vh;
 }
 
-.el-menu.el-menu--horizontal{
-    border-bottom: none!important;
+.footer {
+  background-color: #000;
+  color: gold;
+  min-height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iframe {
+  height: 86vh;
+  width: 100vw;
+  border: none;
+}
+
+.el-menu-item,
+.el-submenu__title,
+.el-submenu__title:focus,
+.el-submenu__title:hover {
+  font-size: 1.1em !important;
+}
+
+.el-menu.el-menu--horizontal {
+  border-bottom: none !important;
 }
 </style>

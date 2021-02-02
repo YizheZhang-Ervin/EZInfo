@@ -145,7 +145,7 @@ export default {
           title: "Notification",
           message: "Please type in peer id to call!",
           duration: 5000,
-          type: 'warning'
+          type: "warning",
         });
       } else {
         if (this.localStream == null) {
@@ -153,9 +153,10 @@ export default {
             title: "Notification",
             message: "Please test camera first!",
             duration: 5000,
-            type: 'warning'
+            type: "warning",
           });
         } else {
+          this.peerId = this.peerId.replace(/\s+/g, "");
           const sendCall = this.peer.call(this.peerId, this.localStream);
           sendCall.on("stream", (remoteStream) => {
             let peerv = document.getElementById("peerv");
@@ -167,7 +168,7 @@ export default {
             message:
               "If you can't see the other side video, please click 'call' again",
             duration: 5000,
-            type: 'warning'
+            type: "warning",
           });
         }
       }
@@ -179,9 +180,10 @@ export default {
           title: "Notification",
           message: "Please type in peer id to connect!",
           duration: 5000,
-          type: 'warning'
+          type: "warning",
         });
       } else {
+        this.peerId = this.peerId.replace(/\s+/g, "");
         this.conn = this.peer.connect(this.peerId, {
           reliable: true,
         });
@@ -200,7 +202,7 @@ export default {
           title: "Notification",
           message: "Please connect to peer first!",
           duration: 5000,
-          type: 'warning'
+          type: "warning",
         });
       } else {
         let content = this.inputmsg;
