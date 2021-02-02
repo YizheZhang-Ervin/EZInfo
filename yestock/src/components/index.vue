@@ -29,6 +29,7 @@
         <el-submenu index="tool">
           <template slot="title"><i class="el-icon-s-tools"></i>Tools</template>
           <el-menu-item index="translator">Translator</el-menu-item>
+          <el-menu-item index="videochat">VideoChat</el-menu-item>
           <el-submenu index="Games">
             <template slot="title">Games</template>
             <el-menu-item index="3-1"
@@ -69,6 +70,7 @@
       <iframe id="iframe001" class="iframe" name="iframe001" v-show="iframeShow"></iframe>
       <Translator v-show="translatorShow"></Translator>
       <Fintech v-show="fintechShow"></Fintech>
+      <Videochat v-show="videochatShow"></Videochat>
     </main>
     <footer class="footer">
       <a target="_blank" rel="noopener noreferrer" 
@@ -82,12 +84,14 @@
 <script>
 import Translator from "./translator.vue";
 import Fintech from "./fintech.vue";
+import Videochat from "./videochat.vue";
 
 export default {
   name: "Index",
   components:{
     Translator,
-    Fintech
+    Fintech,
+    Videochat
   },
   data() {
     return {
@@ -96,6 +100,7 @@ export default {
       translatorShow:false,
       iframeShow:false,
       fintechShow:true,
+      videochatShow:false,
       frameSrc:""
     };
   },
@@ -123,11 +128,11 @@ export default {
       let latitude =
         position.coords.latitude > 0
           ? position.coords.latitude + " N"
-          : position.coords.latitude + " S";
+          : -position.coords.latitude + " S";
       let longitude =
         position.coords.longitude > 0
           ? position.coords.longitude + " E"
-          : position.coords.longitude + " W";
+          : -position.coords.longitude + " W";
       this.userLocation = `Location Safety Notification: You are now at (${latitude}, ${longitude}), have access to Algorithms.`;
     },
     getLocation() {
@@ -143,14 +148,22 @@ export default {
         this.translatorShow = true;
         this.iframeShow = false;
         this.fintechShow = false;
+        this.videochatShow = false;
       }else if(key=="fintech"){
         this.translatorShow = false;
         this.iframeShow = false;
         this.fintechShow = true;
+        this.videochatShow = false;
+      }else if(key=="videochat"){
+        this.translatorShow = false;
+        this.iframeShow = false;
+        this.fintechShow = false;
+        this.videochatShow = true;
       }else{
         this.translatorShow = false;
         this.iframeShow = true;
         this.fintechShow = false;
+        this.videochatShow = false;
         document.getElementById("iframe001").src = "";
       }
     }

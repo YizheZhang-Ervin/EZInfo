@@ -6,9 +6,10 @@ Unity Game
 - Translator  
 - Unity Games  
 - FinTech Algorithms  
+- VideoChat
 
 # Architecture  
-Front End: Vue CLI + Vue router + ElementUI + Axios + Echarts  
+Front End: Vue CLI + Vue router + ElementUI + Axios + Echarts + PeerJS  
 Back End: Flask  
 Game Engine: Unity  
   
