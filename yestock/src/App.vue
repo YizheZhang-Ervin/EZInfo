@@ -43,17 +43,17 @@ export default {
   }
 }
 
-#app::-webkit-scrollbar {
+::-webkit-scrollbar {
   /*滚动条整体样式*/
   height: 7px;
   width: 7px;
 }
-#app::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   /*滚动条里面小方块*/
   border-radius: 10px;
   background: gold;
 }
-#app::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   /*滚动条里面轨道*/
   border-radius: 10px;
   background: transparent;
@@ -82,12 +82,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.iframe {
-  height: 86vh;
-  width: 100vw;
-  border: none;
 }
 
 .el-menu-item,
