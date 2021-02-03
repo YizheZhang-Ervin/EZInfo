@@ -17,18 +17,23 @@
     <!-- 单人详细 -->
     <div v-show="detailShow" style="height:86vh">
     <el-button circle icon="el-icon-arrow-left" @click="changeListDetailShow('back')"></el-button>
-    <el-row type="flex" justify="space-around">
+    <section class="outer">
         <!-- 左边 -->
-        <el-col :span="6">
+        <section class="leftpart">
             <el-card :body-style="{padding:'0px'}">
-                <img width="100%" :src="memberDetail.img">
-                <div style="padding: 14px;">
+                <div>
+                    <el-image :src="memberDetail.img" fit="contain" style="height:40vh;">
+                    </el-image>
+                </div>
+                <div>
+                    <div  class="flex-col2">
                     <el-button type="text" icon="el-icon-message" class="email">Email: {{memberDetail.mail}}
                     </el-button>
-                    <br />
-                    <el-button type="text" icon="el-icon-user">Contact: <span
-                            v-html="memberDetail.contact"></span></el-button>
+                    <el-button type="text" icon="el-icon-user" class="contact">Contact: <span
+                            v-html="memberDetail.contact"></span>
+                    </el-button>
                     <el-divider></el-divider>
+                    </div>
                     <div class="flex-row">
                         <a :href="memberDetail.linkedin">
                             <el-button circle>ln</el-button>
@@ -40,9 +45,9 @@
                     </div>
                 </div>
             </el-card>
-        </el-col>
+        </section>
         <!-- 右边 -->
-        <el-col :span="15">
+        <section class="rightpart">
             <!-- 名字 -->
             <div class="flex-row2">
                 <h1>{{memberDetail.name}}
@@ -52,22 +57,22 @@
                 </el-image>
             </div>
             <!-- Role -->
-            <div>
+            <div class="flex-col">
                 <el-divider content-position="left">Role</el-divider>
                 <p>{{memberDetail.exp1}}</p>
             </div>
             <!-- Projects -->
-            <div>
+            <div class="flex-col">
                 <el-divider content-position="left">Projects</el-divider>
                 <div v-html="memberDetail.exp2"></div>
             </div>
             <!-- Skills -->
-            <div>
+            <div class="flex-col">
                 <el-divider content-position="left">Skills</el-divider>
                 <p>{{memberDetail.exp3}}</p>
             </div>
-        </el-col>
-    </el-row>
+        </section>
+    </section>
     </div>
 </div>
 </template>
@@ -114,6 +119,9 @@ export default {
 </script>
 
 <style scoped>
+h1{
+    font-size: xx-large;
+}
 .el-divider__text{
     background-color: white!important;
     color:black!important;
@@ -133,11 +141,51 @@ export default {
     justify-content: space-between;
 }
 
-.email{
+.flex-col{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width:50vw;
+}
+
+.flex-col2{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width:30vw;
+}
+
+.email,.contact{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: inline-block;
-    width: 180px;
+    text-indent: 15px;
 }
+
+.outer{
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+    width: 100vw;
+    height:86vh;
+}
+.leftpart{
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    width: 30vw;
+    height:66vh;
+}
+.rightpart{
+    display: flex;
+    align-self:center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 60vw;
+    height:86vh;
+}
+
 </style>
