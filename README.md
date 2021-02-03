@@ -7,7 +7,7 @@ YeStock
 - Geolocation with location  
 - Translator   
 - Excel with IO/New/ComputeExpression  
-- VideoChat + Video Player with drag/drop + browser parameters  
+- VideoChat + Video Player with drag/drop + Status parameters  
 - Group  
   
 # Architecture  

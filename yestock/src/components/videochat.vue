@@ -186,7 +186,7 @@ export default {
   methods: {
     receiver() {
       // 初始化peer
-      this.peer = new Peer();
+      this.peer = new Peer({debug:2});
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -230,7 +230,7 @@ export default {
     },
     sender() {
       // 初始化peer
-      this.peer = new Peer();
+      this.peer = new Peer({debug:2});
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -260,9 +260,9 @@ export default {
     async setLocalVideo() {
       navigator.mediaDevices.getUserMedia =
         navigator.mediaDevices.getUserMedia ||
-        navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia;
+        navigator.mozGetUserMedia ||
+        navigator.getUserMedia;
       this.localStream = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true,
