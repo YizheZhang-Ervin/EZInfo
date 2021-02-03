@@ -163,6 +163,7 @@ h1{
     white-space: nowrap;
     display: inline-block;
     text-indent: 15px;
+    margin-left: 0!important;
 }
 
 .outer{

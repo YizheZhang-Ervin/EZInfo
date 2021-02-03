@@ -186,7 +186,17 @@ export default {
   methods: {
     receiver() {
       // 初始化peer
-      this.peer = new Peer({ debug: 2 });
+      this.peer = new Peer({ 
+        debug: 2,
+        config: {
+          'iceServers': [
+            { url: 'stun:stun1.l.google.com:19302' },
+            { 
+              url: 'turn:numb.viagenie.ca:3478',username: '807850644@qq.com',credential:"ZXCVBNM" 
+            }
+          ]
+        } 
+      });
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -243,7 +253,17 @@ export default {
     },
     sender() {
       // 初始化peer
-      this.peer = new Peer({ debug: 2 });
+      this.peer = new Peer({ 
+        debug: 2,
+        config: {
+          'iceServers': [
+            { url: 'stun:stun1.l.google.com:19302' },
+            { 
+              url: 'turn:numb.viagenie.ca:3478',username: '807850644@qq.com',credential:"ZXCVBNM" 
+            }
+          ]
+        }
+      });
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
