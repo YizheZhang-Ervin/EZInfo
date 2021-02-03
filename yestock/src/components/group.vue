@@ -15,7 +15,7 @@
     </div>
     </div>
     <!-- 单人详细 -->
-    <div v-show="detailShow" style="height:86vh">
+    <div v-if="detailShow" style="height:86vh">
     <el-button circle icon="el-icon-arrow-left" @click="changeListDetailShow('back')"></el-button>
     <section class="outer">
         <!-- 左边 -->

@@ -192,7 +192,7 @@ export default {
           'iceServers': [
             { url: 'stun:stun1.l.google.com:19302' },
             { 
-              url: 'turn:numb.viagenie.ca:3478',username: '807850644@qq.com',credential:"ZXCVBNM" 
+              url: 'turn:numb.viagenie.ca:3478',username: '553887054@qq.com',credential:"87654321" 
             }
           ]
         } 

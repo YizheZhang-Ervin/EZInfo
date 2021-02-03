@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_restful import Api,Resource,reqparse
 from flask_cors import CORS
 from flask import jsonify, render_template, request
@@ -22,6 +22,23 @@ parser.add_argument('input', type=str)
 def index():
     if request.method == 'GET':
         return render_template('index.html')
+    elif request.method == 'POST':
+        key = request.args.get('key', '')
+        return render_template('index.html', data=key)
+
+@app.route('/<any>', methods=['GET', 'POST'])
+def indexAny(any):
+    if request.method == 'GET':
+        if any=="undefined":
+            return render_template('index.html')
+        elif any=="ervin":
+            return redirect("https://ervinzhang.pythonanywhere.com")
+        elif any=="github":
+            return redirect("https://github.com/YizheZhang-Ervin")
+        elif any=="linkedin":
+            return redirect("https://www.linkedin.com/in/yizhe-zhang/")
+        elif any=="zhihu":
+            return redirect("https://www.zhihu.com/people/yizhezhang")
     elif request.method == 'POST':
         key = request.args.get('key', '')
         return render_template('index.html', data=key)
