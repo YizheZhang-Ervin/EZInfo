@@ -26,12 +26,10 @@ def index():
         key = request.args.get('key', '')
         return render_template('index.html', data=key)
 
-@app.route('/<any>', methods=['GET', 'POST'])
+@app.route('/<any>', methods=['GET'])
 def indexAny(any):
     if request.method == 'GET':
-        if any=="undefined":
-            return render_template('index.html')
-        elif any=="ervin":
+        if any=="ervin":
             return redirect("https://ervinzhang.pythonanywhere.com")
         elif any=="github":
             return redirect("https://github.com/YizheZhang-Ervin")
@@ -39,9 +37,8 @@ def indexAny(any):
             return redirect("https://www.linkedin.com/in/yizhe-zhang/")
         elif any=="zhihu":
             return redirect("https://www.zhihu.com/people/yizhezhang")
-    elif request.method == 'POST':
-        key = request.args.get('key', '')
-        return render_template('index.html', data=key)
+        elif any=="undefined":
+            return render_template('index.html')
 
 # RESTful API Route
 class jsonAPI(Resource):

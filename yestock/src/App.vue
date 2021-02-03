@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <div id="app">
-      <router-view></router-view>
-    </div>
-    <div id="backup">
-      <h1>Please use larger screen(>800*700) to browse this website</h1>
-    </div>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,32 +12,6 @@ export default {
 </script>
 
 <style>
-@media(min-width:800px) and (min-height:700px){
-  #app{
-    display: block;
-  }
-  #backup{
-    display: none;
-  }
-}
-@media(max-width:800px){
-  #app{
-    display: none;
-  }
-  #backup{
-    display: block;
-  }
-}
-
-@media(max-height:700px){
-  #app{
-    display: none;
-  }
-  #backup{
-    display: block;
-  }
-}
-
 ::-webkit-scrollbar {
   /*滚动条整体样式*/
   height: 7px;

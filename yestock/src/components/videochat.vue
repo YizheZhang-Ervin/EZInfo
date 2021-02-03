@@ -1,8 +1,8 @@
 <template>
-  <div class="whole">
+  <div class="whole mh86">
     <!-- video -->
-    <section class="videoArea">
-      <section class="videoBtn">
+    <section class="videoArea mw50 mh86">
+      <section class="videoBtn mw45 mh6">
         <el-input
           placeholder="Type in peer id to call"
           v-model="peerId"
@@ -30,15 +30,15 @@
       <video
         id="selfv"
         autoplay
-        class="video"
+        class="video w50 mh40"
         @drop="drop($event)"
         @dragover="allowDrop($event)"
       ></video>
-      <video id="peerv" autoplay class="video"></video>
+      <video id="peerv" autoplay class="video w50 mh40"></video>
     </section>
     <!-- chatting -->
-    <section class="chattingArea">
-      <section class="chatBtn">
+    <section class="chattingArea mw50 mh86">
+      <section class="chatBtn mw45 mh6">
         <el-input
           placeholder="Type in peer id to call"
           v-model="peerId"
@@ -62,7 +62,7 @@
           >Browse Status</el-button
         >
       </section>
-      <el-card class="box-card cards">
+      <el-card class="box-card cards mw50 mh10">
         <el-switch
           v-model="chatrole"
           active-color="lightgreen"
@@ -83,12 +83,12 @@
           @dragstart="drag($event)"
           draggable="true"
           v-text="url001"
-          class="urls"
+          class="urls w-url"
         ></p>
       </el-card>
 
-      <pre v-text="msg" class="chattingHistory"></pre>
-      <section class="inputArea">
+      <pre v-text="msg" class="chattingHistory mw45 mh54"></pre>
+      <section class="inputArea mw50 mh10">
         <el-input
           id="inputmsg"
           placeholder="msg"
@@ -186,16 +186,18 @@ export default {
   methods: {
     receiver() {
       // 初始化peer
-      this.peer = new Peer({ 
+      this.peer = new Peer({
         debug: 2,
         config: {
-          'iceServers': [
-            { url: 'stun:stun1.l.google.com:19302' },
-            { 
-              url: 'turn:numb.viagenie.ca:3478',username: '553887054@qq.com',credential:"87654321" 
-            }
-          ]
-        } 
+          iceServers: [
+            { url: "stun:stun1.l.google.com:19302" },
+            {
+              url: "turn:numb.viagenie.ca:3478",
+              username: "553887054@qq.com",
+              credential: "87654321",
+            },
+          ],
+        },
       });
       // 获取peer的ID
       this.peer.on("open", () => {
@@ -253,16 +255,18 @@ export default {
     },
     sender() {
       // 初始化peer
-      this.peer = new Peer({ 
+      this.peer = new Peer({
         debug: 2,
         config: {
-          'iceServers': [
-            { url: 'stun:stun1.l.google.com:19302' },
-            { 
-              url: 'turn:numb.viagenie.ca:3478',username: '807850644@qq.com',credential:"ZXCVBNM" 
-            }
-          ]
-        }
+          iceServers: [
+            { url: "stun:stun1.l.google.com:19302" },
+            {
+              url: "turn:numb.viagenie.ca:3478",
+              username: "807850644@qq.com",
+              credential: "ZXCVBNM",
+            },
+          ],
+        },
       });
       // 获取peer的ID
       this.peer.on("open", () => {
@@ -431,91 +435,146 @@ export default {
 </script>
 
 <style scoped>
-/* 总宽度 */
-.fullwidth {
-  width: 45vw;
+@media (max-width: 700px) {
+  /* 整体 */
+  .whole {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  /* 总宽度 */
+  .mw50 {
+    min-width: 100vw;
+  }
+
+  .w50 {
+    width: 100vw;
+  }
+
+  .mw45 {
+    min-width: 90vw;
+  }
+
+  .w-url {
+    width: 90vw;
+  }
 }
 
-/* 整体 */
-.whole {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+@media (max-height: 700px) {
+  /* 整体 */
+  .whole {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  /* 总宽度 */
+  .mw50 {
+    min-width: 100vw;
+  }
+
+  .w50 {
+    width: 100vw;
+  }
+
+  .mw45 {
+    min-width: 90vw;
+  }
+
+  .w-url {
+    width: 90vw;
+  }
+}
+@media (min-width: 700px) and (min-height: 700px) {
+  /* 整体 */
+  .whole {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  /* 总宽度 */
+  .mw50 {
+    min-width: 50vw;
+  }
+
+  .w50 {
+    width: 50vw;
+  }
+
+  .mw45 {
+    min-width: 45vw;
+  }
+
+  .w-url {
+    width: 45vw;
+  }
+}
+/* 总高度 */
+.mh86 {
+  min-height: 86vh;
+}
+.mh6 {
+  min-height: 6vh;
+}
+.mh10 {
+  min-height: 10vh;
+}
+.mh54 {
+  min-height: 54vh;
+}
+.mh40 {
+  min-height: 40vh;
 }
 
-/* 右部 */
+/* video部分 */
 .videoArea {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 80vh;
-  min-width: 50vw;
   border: 1px dashed lightgray;
 }
-/* 右顶部按钮 */
+/* 顶部按钮 */
 .videoBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 6vh;
-  min-width: 45vw;
 }
-/* 右下部视频 */
+/* 下部视频 */
 .video {
   border: 1px dashed lightgray;
 }
 
-#selfv,
-#peerv {
-  width: 50vw;
-  height: 40vh;
-}
-
 /* ------------------------------------------------ */
-/* 左部 */
+/* chatting部分 */
 .chattingArea {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 50vw;
-  min-height: 80vh;
   border: 1px dashed lightgray;
 }
-/* 左顶部按钮 */
+/* 顶部按钮 */
 .chatBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 6vh;
-  min-width: 45vw;
 }
 /* url框 */
 .urls {
-  width: 45vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: inline-block;
 }
-/* 左中上部卡片 */
-.cards {
-  min-width: 45vw;
-  min-height: 10vh;
-}
-/* 左中下部消息框 */
-.chattingHistory {
-  min-height: 54vh;
-  min-width: 45vw;
-}
-/* 左下部输入框 */
+
+/* 下部输入框 */
 .inputArea {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 10vh;
   border: 1px dashed lightgray;
-  min-width: 50vw;
 }
 </style>

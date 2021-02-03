@@ -18,6 +18,7 @@ Deploy: Heroku
   
 # Run  
 cd yestock -> npm run build  
+move static/favicon to static/img/favicon  
 python -m flask run  
 open http://127.0.0.1:5000/  
   

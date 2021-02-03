@@ -1,33 +1,40 @@
 <template>
-  <div>
-    <!-- toolbar -->
-    <section class="toolbar">
-      <el-button type="info" round plain @click="createSheet"
-        >New CSV</el-button
-      >
-      <el-button type="info" round plain @click="importCSV"
-        >Import CSV</el-button
-      >
-      <input id="file" type="file" accept=".csv" hidden @change="loadCSV" />
-      <el-button type="info" round plain @click="exportCSV"
-        >Export CSV</el-button
-      >
-      <el-button type="info" round plain @click="addRow">Add Row </el-button>
-      <el-button type="info" round plain @click="delRow">Del Row</el-button>
-      <el-input v-model="computeExp" placeholder="enter expression" clearable>
-        <div slot="prepend" v-text="computeRst"></div>
-        <el-button
-          slot="append"
-          icon="el-icon-caret-right"
-          @click="computeGrid"
-        ></el-button>
-      </el-input>
-    </section>
-    <!-- sheet -->
-    <section id="table">
-      <section id="sheet"></section>
-    </section>
-  </div>
+  <section>
+    <!-- 大屏幕 -->
+    <div id="bigscreen">
+      <!-- toolbar -->
+      <section class="toolbar">
+        <el-button type="info" round plain @click="createSheet"
+          >New CSV</el-button
+        >
+        <el-button type="info" round plain @click="importCSV"
+          >Import CSV</el-button
+        >
+        <input id="file" type="file" accept=".csv" hidden @change="loadCSV" />
+        <el-button type="info" round plain @click="exportCSV"
+          >Export CSV</el-button
+        >
+        <el-button type="info" round plain @click="addRow">Add Row </el-button>
+        <el-button type="info" round plain @click="delRow">Del Row</el-button>
+        <el-input v-model="computeExp" placeholder="enter expression" clearable>
+          <div slot="prepend" v-text="computeRst"></div>
+          <el-button
+            slot="append"
+            icon="el-icon-caret-right"
+            @click="computeGrid"
+          ></el-button>
+        </el-input>
+      </section>
+      <!-- sheet -->
+      <section id="table">
+        <section id="sheet"></section>
+      </section>
+    </div>
+    <!-- 小屏幕 -->
+    <div id="smallscreen">
+      <h1>Please use larger screen(>800*700) to browse this website</h1>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -40,7 +47,7 @@ export default {
       computeExp: "",
       computeRst: "",
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
     };
   },
   mounted() {
@@ -224,16 +231,16 @@ export default {
     },
     slideGrid() {
       let sheet = document.getElementById("sheet");
-        sheet.onmouseover = (ev) => {
-          if(ev.target.nodeName.toLowerCase()=="div"){
-            ev.target.style.backgroundColor = "lightblue";
-          }
-        };
-        sheet.onmouseout = (ev) => {
-          if(ev.target.nodeName.toLowerCase()=="div"){
-            ev.target.style.backgroundColor = "transparent";
-          }
-        };
+      sheet.onmouseover = (ev) => {
+        if (ev.target.nodeName.toLowerCase() == "div") {
+          ev.target.style.backgroundColor = "lightblue";
+        }
+      };
+      sheet.onmouseout = (ev) => {
+        if (ev.target.nodeName.toLowerCase() == "div") {
+          ev.target.style.backgroundColor = "transparent";
+        }
+      };
     },
     mouseMove(ev) {
       ev = ev || window.event;
@@ -253,6 +260,31 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 800px) and (min-height: 600px) {
+  #bigscreen {
+    display: block;
+  }
+  #smallscreen {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  #bigscreen {
+    display: none;
+  }
+  #smallscreen {
+    display: block;
+  }
+}
+
+@media (max-height: 600px) {
+  #bigscreen {
+    display: none;
+  }
+  #smallscreen {
+    display: block;
+  }
+}
 .toolbar {
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;

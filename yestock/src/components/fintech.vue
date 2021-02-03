@@ -1,42 +1,51 @@
 <template>
-  <div class="whole">
-    <!-- left part -->
-    <section>
-      <!-- top part: charts -->
-      <section class="charts" id="charts"></section>
-      <!-- bottom part: output -->
-      <section class="output">
-        <pre v-text="output" class="output-pre"></pre>
+  <div>
+    <div class="whole">
+      <!-- left part -->
+      <section>
+        <!-- top part: charts -->
+        <section class="charts w50" id="charts"></section>
+        <!-- bottom part: output -->
+        <section class="output w50">
+          <pre v-text="output" class="output-pre"></pre>
+        </section>
       </section>
-    </section>
-    <!-- right part: input -->
-    <section>
-      <el-button
-        class="btn"
-        size="small"
-        icon="el-icon-caret-right"
-        round
-        @click="post"
-        >Run Code</el-button
-      >
-      <el-button
-        class="btn"
-        size="small"
-        icon="el-icon-caret-right"
-        round
-        @click="clear('codes')"
-        >Clear Code</el-button
-      >
-      <el-button
-        class="btn"
-        size="small"
-        icon="el-icon-caret-right"
-        round
-        @click="clear('output')"
-        >Clear Output</el-button
-      >
-      <textarea id="input" class="input" v-model="input" @keydown="cancelTab($event)"></textarea>
-    </section>
+      <!-- right part: input -->
+      <section class="rightpart">
+        <section>
+        <el-button
+          class="btn"
+          size="small"
+          icon="el-icon-caret-right"
+          round
+          @click="post"
+          >Run Code</el-button
+        >
+        <el-button
+          class="btn"
+          size="small"
+          icon="el-icon-caret-right"
+          round
+          @click="clear('codes')"
+          >Clear Code</el-button
+        >
+        <el-button
+          class="btn"
+          size="small"
+          icon="el-icon-caret-right"
+          round
+          @click="clear('output')"
+          >Clear Output</el-button
+        >
+        </section>
+        <textarea
+          id="input"
+          class="inputArea w50"
+          v-model="input"
+          @keydown="cancelTab($event)"
+        ></textarea>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -85,12 +94,17 @@ export default {
             } else {
               this.visualData = response.data.result;
               let date = new Date(Date.now());
-              let time = date.getHours() + ":" +date.getMinutes() +":" +date.getSeconds();
-              let rst = ""
-              if(this.visualData.x!=undefined){
+              let time =
+                date.getHours() +
+                ":" +
+                date.getMinutes() +
+                ":" +
+                date.getSeconds();
+              let rst = "";
+              if (this.visualData.x != undefined) {
                 rst = `Output(${time})\n x:${this.visualData.x},\n y:${this.visualData.y},\n y2:${this.visualData.y2}\n\n`;
-              }else{
-                rst = `Output(${time})\n ${this.visualData.other}\n\n`
+              } else {
+                rst = `Output(${time})\n ${this.visualData.other}\n\n`;
               }
               this.output += rst;
               this.plot();
@@ -137,70 +151,109 @@ export default {
       myChart.setOption(option);
     },
     clear(content) {
-        if(content=="codes"){
-            this.input = "class Run:\n  def run():\n    return {'x':[],'y':[],'y2':[]}";
-        }else if(content=="output"){
-            this.output = "";
-        }
+      if (content == "codes") {
+        this.input =
+          "class Run:\n  def run():\n    return {'x':[],'y':[],'y2':[]}";
+      } else if (content == "output") {
+        this.output = "";
+      }
     },
-    cancelTab(e){
-        if(e.keyCode==9){
-            e.preventDefault();
-            // 任意位置tab键插入四个空格
-            let ip = document.getElementById("input");
-            let value = "    ";
-            var startPos = ip.selectionStart;
-            var endPos = ip.selectionEnd;
-            var scrollTop = ip.scrollTop;
-            ip.value = ip.value.substring(0, startPos) + value + ip.value.substring(endPos, ip.value.length);
-            ip.focus();
-            ip.selectionStart = startPos + value.length;
-            ip.selectionEnd = startPos + value.length;
-            ip.scrollTop = scrollTop;
-        }
-    }
+    cancelTab(e) {
+      if (e.keyCode == 9) {
+        e.preventDefault();
+        // 任意位置tab键插入四个空格
+        let ip = document.getElementById("input");
+        let value = "    ";
+        var startPos = ip.selectionStart;
+        var endPos = ip.selectionEnd;
+        var scrollTop = ip.scrollTop;
+        ip.value =
+          ip.value.substring(0, startPos) +
+          value +
+          ip.value.substring(endPos, ip.value.length);
+        ip.focus();
+        ip.selectionStart = startPos + value.length;
+        ip.selectionEnd = startPos + value.length;
+        ip.scrollTop = scrollTop;
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+@media (min-width: 800px) and (min-height: 700px) {
+  .whole {
+    display: flex;
+  }
+  .w50{
+    width: 50vw;
+  }
+}
+@media (max-width: 800px) {
+  .whole {
+    display: flex;
+    flex-direction: column;
+  }
+  .w50{
+    width: 100vw;
+  }
+}
+
+@media (max-height: 700px) {
+  .whole {
+    display: flex;
+    flex-direction: column;
+  }
+  .w50{
+    width: 100vw;
+  }
+}
+
+/* 整体 */
 .whole {
-  display: flex;
   align-items: center;
   background: black;
 }
 
+/* 图表 */
 .charts {
   height: 43vh;
-  width: 50vw;
   background: beige;
   border: 2px outset black;
 }
 
+/* 输出区 */
 .output {
   height: 43vh;
-  width: 50vw;
   background: beige;
   border: 2px outset black;
   overflow: scroll;
 }
-
-.output-pre{
-    margin-left: 2vw;
-    font-size: 1.4em;
+/* 输出区内部 */
+.output-pre {
+  margin-left: 2vw;
+  font-size: 1.4em;
 }
-
-.input {
+/* 输入区 */
+.rightpart{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* 输入区内部 */
+.inputArea {
   height: 82vh;
-  width: 50vw;
   background: rgba(255, 255, 255, 0.12);
   color: gold;
   font-size: 1.4em;
 }
-
+/* 输入去顶部按钮 */
 .btn {
   background: transparent;
   color: gold;
   min-height: 4vh;
 }
+
 </style>

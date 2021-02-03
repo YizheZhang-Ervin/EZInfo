@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-card class="box-card">
+    <!-- 大屏幕 -->
+    <el-card id="bigscreen">
       <div slot="header" class="clearfix">
         <!-- 输入语言类型 -->
         <el-select v-model="fromlang" placeholder="输入语言类型">
@@ -55,6 +56,10 @@
         <el-button @click="getTranslate" slot="reference">Translate</el-button>
       </el-popover>
     </el-card>
+    <!-- 小屏幕 -->
+    <div id="smallscreen">
+      <h1>Please use larger screen(>800*700) to browse this website</h1>
+    </div>
   </div>
 </template>
 
@@ -120,4 +125,21 @@ export default {
 </script>
 
 <style scoped>
+@media (min-height:500px){
+  #bigscreen{
+    display: block;
+  }
+  #smallscreen{
+    display: none;
+  }
+}
+
+@media(max-height:500px){
+  #bigscreen{
+    display: none;
+  }
+  #smallscreen{
+    display: block;
+  }
+}
 </style>
