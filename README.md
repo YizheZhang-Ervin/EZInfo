@@ -13,16 +13,12 @@ YeStock
 # Architecture  
 Front End: Vue CLI + Vue router + ElementUI  
 Node Modules: Axios + Echarts + PeerJS  
-Back End: Flask    
+Back End: Flask + translate  
 Deploy: Heroku  
   
 # Run  
+cd yestock -> npm run build  
 python -m flask run  
+open http://127.0.0.1:5000/  
   
-# If Update FrontEnd  
-1. cd yzgame  > npm run build  
-  
-2. move all files under temp_static to static  
-  
-3. adjust each href and src add /static in index.html  
   

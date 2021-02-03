@@ -133,12 +133,12 @@ export default {
       drawer: false,
       peerId: null,
       peer: null,
+      selfid: null,
       localStream: null,
       conn: null,
       connStatus: "Unconnected",
       msg: "",
       inputmsg: null,
-      selfid: null,
       url001:
         "https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/89/78/6797889/6797889_da3-1-16.mp4?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1612286863&gen=playurl&os=kodobv&oi=978800370&trid=e879e59beb8a47a19728b10316f3f0e5h&platform=html5&upsig=d7a302c76c539ae1b6748312a3683704&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=524602686&logo=80000000",
       dataURL: {
@@ -186,21 +186,29 @@ export default {
   methods: {
     receiver() {
       // 初始化peer
-      this.peer = new Peer({debug:2});
+      this.peer = new Peer({ debug: 2 });
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
       });
       // 接收消息
       this.peer.on("connection", (c) => {
+        // 连接打开: 已连接，不用手动连
+        if (this.conn && this.conn.open) {
+          c.on("open", function () {
+            c.send("Already connected to another client");
+            setTimeout(function () {
+              c.close();
+            }, 500);
+          });
+          return;
+        }
         this.conn = c;
         this.connStatus = `Connected to ${this.conn.peer}`;
         // 收到数据
         this.conn.on("data", (data) => {
           this.msg = `${this.msg} \n ${this.conn.peer}:${data}`;
         });
-        // 连接打开: 已连接，不用手动连
-        this.conn.on("open", () => {});
         // 连接关闭
         this.conn.on("close", () => {});
       });
@@ -214,9 +222,14 @@ export default {
           let peerv = document.getElementById("peerv");
           peerv.srcObject = remoteStream;
         });
+        receiveCall.on("error", (err) => {
+          console.log(err);
+        });
       });
       // 失联重连
       this.peer.on("disconnected", () => {
+        this.connStatus = `Disconnected to ${this.peerId}, reconnecting...`;
+        this.peer.id = this.selfid;
         this.peer.reconnect();
       });
       // 关闭
@@ -230,7 +243,7 @@ export default {
     },
     sender() {
       // 初始化peer
-      this.peer = new Peer({debug:2});
+      this.peer = new Peer({ debug: 2 });
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -247,6 +260,8 @@ export default {
       // });
       // 失联重连
       this.peer.on("disconnected", () => {
+        this.connStatus = `Disconnected to ${this.peerId}, reconnecting...`;
+        this.peer.id = this.selfid;
         this.peer.reconnect();
       });
       // 关闭
@@ -302,6 +317,9 @@ export default {
               let peerv = document.getElementById("peerv");
               peerv.srcObject = remoteStream;
             });
+            sendCall.on("error", (err) => {
+              console.log(err);
+            });
             // 如果不显示对方
             this.$notify({
               title: "Notification",
@@ -332,10 +350,12 @@ export default {
             type: "warning",
           });
         } else {
+          // 旧连接关闭
+          if (this.conn) {
+            this.conn.close();
+          }
           this.peerId = this.peerId.replace(/\s+/g, "");
-          this.conn = this.peer.connect(this.peerId, {
-            reliable: true,
-          });
+          this.conn = this.peer.connect(this.peerId);
           // 打开连接
           this.conn.on("open", () => {
             this.connStatus = `Connected to ${this.conn.peer}`;
@@ -347,6 +367,10 @@ export default {
           // 关闭连接
           this.conn.on("close", () => {
             this.connStatus = `Connection close`;
+          });
+          // 连接报错
+          this.conn.on("error", (err) => {
+            console.log(err);
           });
         }
       }
@@ -362,9 +386,13 @@ export default {
         });
       } else {
         let content = this.inputmsg;
-        this.conn.send(this.inputmsg);
-        this.inputmsg = "";
-        this.msg = `${this.msg} \n ${this.selfid}(self):${content}`;
+        if (this.conn && this.conn.open) {
+          this.conn.send(this.inputmsg);
+          this.inputmsg = "";
+          this.msg = `${this.msg} \n ${this.selfid}(self):${content}`;
+        } else {
+          this.connStatus = `Disconnected to ${this.peerId}, reconnecting...`;
+        }
       }
     },
     allowDrop(ev) {
