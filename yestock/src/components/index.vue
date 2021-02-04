@@ -113,14 +113,16 @@ export default {
       }
     },
     sendNotification(position) {
-      let latitude =
-        position.coords.latitude > 0
-          ? position.coords.latitude + " N"
-          : -position.coords.latitude + " S";
-      let longitude =
-        position.coords.longitude > 0
-          ? position.coords.longitude + " E"
-          : -position.coords.longitude + " W";
+      let latitude = position.coords.latitude.toFixed(2);
+      let longitude = position.coords.longitude.toFixed(2);
+      latitude =
+        latitude > 0
+          ? latitude + " N"
+          : -latitude + " S";
+      longitude =
+        longitude > 0
+          ? longitude + " E"
+          : -longitude + " W";
       this.userLocation = `Location Safety Notification: You are now at (${latitude}, ${longitude}), have access to Algorithms.`;
     },
     getLocation() {
@@ -185,9 +187,10 @@ a {
   color: gold;
 }
 .notify {
-  background-color: lightgreen;
+  background-image: linear-gradient(45deg,lightgreen,white);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 </style>

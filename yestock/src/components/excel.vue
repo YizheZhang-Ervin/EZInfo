@@ -1,5 +1,9 @@
 <template>
   <section>
+    <!-- 小屏幕 -->
+    <div id="smallscreen">
+      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*700) for better experience!</h3>
+    </div>
     <!-- 大屏幕 -->
     <div id="bigscreen">
       <!-- toolbar -->
@@ -29,10 +33,6 @@
       <section id="table">
         <section id="sheet"></section>
       </section>
-    </div>
-    <!-- 小屏幕 -->
-    <div id="smallscreen">
-      <h1>Please use larger screen(>800*700) to browse this website</h1>
     </div>
   </section>
 </template>
@@ -270,7 +270,7 @@ export default {
 }
 @media (max-width: 800px) {
   #bigscreen {
-    display: none;
+    display: block;
   }
   #smallscreen {
     display: block;
@@ -279,7 +279,7 @@ export default {
 
 @media (max-height: 600px) {
   #bigscreen {
-    display: none;
+    display: block;
   }
   #smallscreen {
     display: block;
@@ -292,8 +292,16 @@ export default {
   align-items: center;
   height: 7vh;
 }
+
 #table {
   overflow: scroll;
   height: 93vh;
+}
+
+h3{
+  background-image: linear-gradient(45deg,gold,white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

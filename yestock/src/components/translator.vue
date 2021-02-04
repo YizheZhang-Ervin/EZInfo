@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- 小屏幕 -->
+    <div id="smallscreen">
+      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*700) for better experience!</h3>
+    </div>
     <!-- 大屏幕 -->
     <el-card id="bigscreen">
       <div slot="header" class="clearfix">
@@ -56,10 +60,6 @@
         <el-button @click="getTranslate" slot="reference">Translate</el-button>
       </el-popover>
     </el-card>
-    <!-- 小屏幕 -->
-    <div id="smallscreen">
-      <h1>Please use larger screen(>800*700) to browse this website</h1>
-    </div>
   </div>
 </template>
 
@@ -136,10 +136,17 @@ export default {
 
 @media(max-height:500px){
   #bigscreen{
-    display: none;
+    display: block;
   }
   #smallscreen{
     display: block;
   }
+}
+
+h3{
+  background-image: linear-gradient(45deg,gold,white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

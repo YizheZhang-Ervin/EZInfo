@@ -63,14 +63,26 @@
         >
       </section>
       <el-card class="box-card cards mw50 mh10">
-        <el-switch
-          v-model="chatrole"
-          active-color="lightgreen"
-          inactive-color="lightblue"
-          active-text="Receiver"
-          inactive-text="Sender"
-        >
-        </el-switch>
+        <section class="flexIdArea">
+          <el-input v-model="definedId" placeholder="use custom id">
+            <el-switch
+              slot="prepend"
+              v-model="chatrole"
+              active-color="lightgreen"
+              inactive-color="lightblue"
+              active-text="Receiver"
+              inactive-text="Sender"
+            >
+            </el-switch>
+            <el-button
+              icon="el-icon-check"
+              slot="append"
+              circle
+              @click="refresh"
+            ></el-button>
+          </el-input>
+        </section>
+
         <br />
         Connection Status:
         <p v-text="connStatus" style="display: inline"></p>
@@ -107,8 +119,13 @@
       </section>
     </section>
     <!-- parameters -->
-    <el-drawer title="Connection Status" :visible.sync="drawer" direction="ltr">
-      <el-card shadow="hover">
+    <el-drawer
+      title="Connection Status"
+      :visible.sync="drawer"
+      direction="ltr"
+      size="50%"
+    >
+      <el-card shadow="hover" class="card">
         <div v-for="k in dataURL" :key="k">
           {{ k }}
         </div>
@@ -129,6 +146,20 @@ export default {
   name: "Videochat",
   data() {
     return {
+      serverConfig: {
+        debug: 2,
+        config: {
+          iceServers: [
+            { url: "stun:stun1.l.google.com:19302" },
+            {
+              url: "turn:numb.viagenie.ca:3478",
+              username: "553887054@qq.com",
+              credential: "87654321",
+            },
+          ],
+        },
+      },
+      definedId: "",
       chatrole: "",
       drawer: false,
       peerId: null,
@@ -168,6 +199,7 @@ export default {
   },
   watch: {
     chatrole() {
+      this.definedId = "";
       if (this.chatrole == true) {
         this.receiver();
       } else {
@@ -184,21 +216,20 @@ export default {
     }
   },
   methods: {
+    refresh() {
+      if (this.chatrole == true) {
+        this.receiver();
+      } else {
+        this.sender();
+      }
+    },
     receiver() {
       // 初始化peer
-      this.peer = new Peer({
-        debug: 2,
-        config: {
-          iceServers: [
-            { url: "stun:stun1.l.google.com:19302" },
-            {
-              url: "turn:numb.viagenie.ca:3478",
-              username: "553887054@qq.com",
-              credential: "87654321",
-            },
-          ],
-        },
-      });
+      if (this.definedId != "") {
+        this.peer = new Peer(this.definedId, this.serverConfig);
+      } else {
+        this.peer = new Peer(this.serverConfig);
+      }
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -255,19 +286,11 @@ export default {
     },
     sender() {
       // 初始化peer
-      this.peer = new Peer({
-        debug: 2,
-        config: {
-          iceServers: [
-            { url: "stun:stun1.l.google.com:19302" },
-            {
-              url: "turn:numb.viagenie.ca:3478",
-              username: "807850644@qq.com",
-              credential: "ZXCVBNM",
-            },
-          ],
-        },
-      });
+      if (this.definedId != "") {
+        this.peer = new Peer(this.definedId, this.serverConfig);
+      } else {
+        this.peer = new Peer(this.serverConfig);
+      }
       // 获取peer的ID
       this.peer.on("open", () => {
         this.selfid = this.peer.id;
@@ -562,12 +585,24 @@ export default {
   align-items: center;
   justify-content: center;
 }
+/* 自定义id */
+.flexIdArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 /* url框 */
 .urls {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: inline-block;
+}
+
+/* 参数抽屉 */
+.card {
+  overflow: scroll;
+  height: 100vh;
 }
 
 /* 下部输入框 */
