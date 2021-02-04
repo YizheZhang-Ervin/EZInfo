@@ -548,7 +548,8 @@ export default {
   min-height: 54vh;
 }
 .mh40 {
-  min-height: 40vh;
+  max-height: 40vh;
+  height:40vh;
 }
 
 /* video部分 */
@@ -602,7 +603,7 @@ export default {
 /* 参数抽屉 */
 .card {
   overflow: scroll;
-  height: 100vh;
+  height: 70vh;
 }
 
 /* 下部输入框 */
