@@ -212,7 +212,7 @@ export default {
 .whole {
   align-items: center;
   background: black;
-  min-height: 93vh;
+  min-height: 100vh;
   width: 100vw;
 }
 

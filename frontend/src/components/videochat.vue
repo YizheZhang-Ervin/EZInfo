@@ -99,7 +99,7 @@
         ></p>
       </el-card>
 
-      <pre v-text="msg" class="chattingHistory mw45 mh54"></pre>
+      <pre v-text="msg" class="mw45 mh54"></pre>
       <section class="inputArea mw50 mh10">
         <el-input
           id="inputmsg"
@@ -539,7 +539,7 @@ export default {
 }
 /* 总高度 */
 .mh93 {
-  min-height: 93vh;
+  min-height: 100vh;
 }
 .mh6 {
   min-height: 6vh;
@@ -548,18 +548,18 @@ export default {
   min-height: 10vh;
 }
 .mh54 {
-  min-height: 54vh;
+  min-height: 61vh;
 }
 .mh43 {
-  max-height: 43vh;
-  height:43vh;
+  max-height: 46vh;
+  height:46vh;
 }
 
 /* video部分 */
 .videoArea {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   border: 1px dashed lightgray;
 }
@@ -579,7 +579,7 @@ export default {
 .chattingArea {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   border: 1px dashed lightgray;
 }

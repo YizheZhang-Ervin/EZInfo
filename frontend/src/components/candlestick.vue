@@ -395,7 +395,7 @@ export default {
 }
 
 .whole{
-  height: 93vh;
+  height: 100vh;
   width: 100vw;
   background-color: beige;
 }

@@ -299,7 +299,7 @@ export default {
 
 #table {
   overflow: scroll;
-  height: 86vh;
+  height: 93vh;
 }
 
 h3{

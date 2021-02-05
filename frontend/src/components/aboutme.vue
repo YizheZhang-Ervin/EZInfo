@@ -562,7 +562,7 @@ export default {
 
 /* 整体 */
 .whole {
-  height: 93vh;
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
   background: beige;
@@ -573,7 +573,7 @@ export default {
 
 /* 左侧 */
 .menu {
-  height: 93vh;
+  height: 100vh;
   font-size: 0.8em;
   max-width: 200px;
   overflow-y: auto;
@@ -589,7 +589,7 @@ export default {
   max-width: 100vw;
   width: 95vw;
   overflow-y: scroll;
-  height: 93vh;
+  height: 100vh;
 }
 .summary-img {
   width: 20vw;

@@ -161,7 +161,7 @@ h3{
 
 .whole{
   background: beige;
-  min-height:93vh;
+  min-height:100vh;
   width: 100%;
 }
 </style>

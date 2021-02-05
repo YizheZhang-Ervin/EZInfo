@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app"  @DOMMouseScroll="preventZoom" @mousewheel="preventZoom">
     <router-view></router-view>
   </div>
 </template>
@@ -12,8 +12,19 @@ export default {
     setInterval(() => {
       this.checkVisibility();
     }, 1000);
+    
   },
   methods: {
+    preventZoom(e){
+      e=e || window.event;
+      //IE/Opera/Chrome
+      if(e.wheelDelta && e.ctrlKey){
+        e.returnValue=false;
+      //Firefox
+      }else if(e.detail){
+        e.returnValue=false;
+      }
+    },
     checkVisibility: function () {
       let vs = document.visibilityState;
       let date = new Date(Date.now());
@@ -32,6 +43,17 @@ export default {
 </script>
 
 <style>
+body::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  background: transparent;
+}
+
+body::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  height: 0px;
+  width: 0px;
+}
+
 ::-webkit-scrollbar {
   /*滚动条整体样式*/
   height: 12px;
