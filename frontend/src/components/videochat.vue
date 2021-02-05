@@ -465,6 +465,7 @@ export default {
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    width: 100vw;
   }
   /* 总宽度 */
   .mw50 {
@@ -491,6 +492,7 @@ export default {
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    width: 100vw;
   }
   /* 总宽度 */
   .mw50 {
@@ -515,6 +517,7 @@ export default {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    width: 100vw;
   }
 
   /* 总宽度 */

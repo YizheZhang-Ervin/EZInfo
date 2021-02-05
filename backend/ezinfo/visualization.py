@@ -22,13 +22,17 @@ def initEngine(whichone):
         engine = pymysql.connect(host=host,port=port,user=user,password=password,database=database)
     return engine
 
-def getDataFromWeb(request):
-    engine = initEngine("fromweb")
-    # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
-    dt = ts.get_hist_data(code='sh',start='2020-02-04',end='2021-12-31')
-    dt.to_sql(name='shindex',con=engine,if_exists='append',dtype={'code':VARCHAR(dt.index.get_level_values('date').str.len().max())})
-    # return JsonResponse({"rst":"success"},safe=False)
-    return redirect('/home/')
+def WebToDB(request):
+    try:
+        engine = initEngine("fromweb")
+        # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
+        dt = ts.get_hist_data(code='sh',start='2020-02-04',end='2021-12-31')
+        dt.to_sql(name='shindex',con=engine,if_exists='append',dtype={'code':VARCHAR(dt.index.get_level_values('date').str.len().max())})
+        # return JsonResponse({"rst":"success"},safe=False)
+    except Exception:
+        pass
+    finally:
+        return redirect('/home/')
 
 def getDataFromDB(request):
     try:
@@ -43,18 +47,23 @@ def getDataFromDB(request):
         cursor.close()
         engine.close()
         if len(rst)==0:
-            getDataFromCSV()
+            CSVToDB()
         return JsonResponse(rst,safe=False)
     except Exception:
-        getDataFromCSV()
+        return JsonResponse({"error":"error"},safe=False)
 
-def getDataFromCSV(request):
-    engine = initEngine("fromweb")
-    # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
-    data = pd.read_csv("stockData.csv")
-    data.to_sql(name='shindex',con=engine,if_exists='append',index=False)
-    # return JsonResponse({"rst":"success"},safe=False)
-    return redirect('/home/')
+def CSVToDB(request):
+    try:
+        engine = initEngine("fromweb")
+        # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
+        data = pd.read_csv("stockData.csv")
+        data = data[["date", "open", "close", "low", "high", "volume"]]
+        data.to_sql(name='shindex',con=engine,if_exists='append',index=False)
+        # return JsonResponse({"rst":"success"},safe=False)
+    except Exception:
+        pass
+    finally:
+        return redirect('/home/')
 
 def DBToCSV():
     engine = initEngine("fromDB")

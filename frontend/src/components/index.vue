@@ -163,7 +163,7 @@ export default {
       }
     },
     changePage(key) {
-      if (key == "aboutme") {
+      if (key.substr(0, 7) == "aboutme") {
         this.translatorShow = false;
         this.codingShow = false;
         this.videochatShow = false;

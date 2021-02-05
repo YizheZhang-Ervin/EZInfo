@@ -143,15 +143,25 @@ export default {
   }
 }
 
+#bigscreen{
+  width:100vw;
+}
+
+#smallscreen{
+  width:100vw;
+}
+
 h3{
   background-image: linear-gradient(45deg,gold,white);
   display: flex;
   align-items: center;
   justify-content: center;
+  width:100vw;
 }
 
 .whole{
   background: beige;
   min-height:93vh;
+  width: 100%;
 }
 </style>

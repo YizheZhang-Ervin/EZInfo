@@ -1,12 +1,17 @@
 <template>
   <section class="whole">
+    <!-- 小屏幕 -->
+    <div id="smallscreen">
+      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*700) for better experience!</h3>
+    </div>
+    <!-- 大屏幕 -->
     <el-card class="cards" shadow="hover">
         <div slot="header" class="headerArea">
             <span>Shanghai Composite Index</span>
             <section>
-              <el-button class="btn"><a href="/api/ssec/web/">From DB</a></el-button>
-              <el-button class="btn"><a href="/api/ssec/csv/">From CSV</a></el-button>
-              <el-button class="btn"><a href="/api/ssec/db/">From Web</a></el-button>
+              <el-button class="btn"><a href="/api/ssec/web/">Refresh</a></el-button>
+              <el-button class="btn"><a href="/api/ssec/csv/">Import From CSV</a></el-button>
+              <el-button class="btn"><a href="/api/ssec/db/">Update From Web</a></el-button>
             </section>
         </div>
         <div id="echarts"></div>
@@ -363,6 +368,32 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 600px) and (min-height: 600px) {
+  #bigscreen {
+    display: block;
+  }
+  #smallscreen {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  #bigscreen {
+    display: block;
+  }
+  #smallscreen {
+    display: block;
+  }
+}
+
+@media (max-height: 600px) {
+  #bigscreen {
+    display: block;
+  }
+  #smallscreen {
+    display: block;
+  }
+}
+
 .whole{
   height: 93vh;
   width: 100vw;
@@ -377,6 +408,7 @@ export default {
 .cards {
   background-color: beige;
   height:60em;
+  width: 100vw;
 }
 
 .headerArea{
@@ -388,7 +420,16 @@ export default {
 .btn{
     background-color: beige;
 }
+
 a{
     text-decoration: none;
+}
+
+h3{
+  background-image: linear-gradient(45deg,gold,white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
 }
 </style>

@@ -213,6 +213,7 @@ export default {
   align-items: center;
   background: black;
   min-height: 93vh;
+  width: 100vw;
 }
 
 /* 图表 */
