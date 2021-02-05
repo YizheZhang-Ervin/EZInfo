@@ -1,5 +1,5 @@
-# YeStock
-YeStock 
+# EZ_Info
+EZ_Info  
   
 # Run
 cd frontend  
@@ -20,12 +20,13 @@ python manage.py runserver
 - Tools: Translator   
 - Tools: Excel with IO/New/ComputeExpression  
 - Tools: VideoChat + Video Player with drag/drop + Status parameters  
-- Resources  
+- Resources: Useful Links    
   
 # Architecture  
 Front End: Vue CLI + Vue router + ElementUI  
 Node Modules: Echarts + PeerJS  
-Back End: Django RESTful + Mysql + translate  
+Back End: Django RESTful + Mysql  
+Python Libs: translate  
   
 ## BackEnd  
 ### install django framework
@@ -34,6 +35,9 @@ pip install djangorestframework
 pip install django-cors-headers   
 pip install pymysql  
 pip install sqlalchemy  
+pip install pandas  
+pip install translate  
+pip install tushare  
   
 ### start project
 django-admin startproject xxProject  
