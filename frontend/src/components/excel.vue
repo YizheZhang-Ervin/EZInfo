@@ -2,7 +2,7 @@
   <section>
     <!-- 小屏幕 -->
     <div id="smallscreen">
-      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*700) for better experience!</h3>
+      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*600) for better experience!</h3>
     </div>
     <!-- 大屏幕 -->
     <div id="bigscreen">
@@ -270,12 +270,20 @@ export default {
   #smallscreen {
     display: none;
   }
+  .toolbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 @media (max-width: 800px) {
   #bigscreen {
     display: block;
   }
   #smallscreen {
+    display: block;
+  }
+  .toolbar{
     display: block;
   }
 }
@@ -287,13 +295,13 @@ export default {
   #smallscreen {
     display: block;
   }
+  .toolbar{
+    display: block;
+  }
 }
 .toolbar {
   background-color: rgba(36, 44, 94, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 7vh;
+  min-height: 7vh;
   width:100vw;
 }
 

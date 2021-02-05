@@ -476,7 +476,7 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
 	/* 整体 */
 	.whole {
 		display: flex;
@@ -500,6 +500,12 @@ export default {
 
 	.w-url {
 		width: 90vw;
+	}
+	.videoBtn {
+		display: block;
+	}
+	.chatBtn {
+		display: block;
 	}
 }
 
@@ -528,8 +534,14 @@ export default {
 	.w-url {
 		width: 90vw;
 	}
+	.videoBtn {
+		display: block;
+	}
+	.chatBtn {
+		display: block;
+	}
 }
-@media (min-width: 700px) and (min-height: 700px) {
+@media (min-width: 1000px) and (min-height: 700px) {
 	/* 整体 */
 	.whole {
 		display: flex;
@@ -553,6 +565,16 @@ export default {
 
 	.w-url {
 		width: 45vw;
+	}
+	.videoBtn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.chatBtn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
 /* 总高度 */
@@ -581,12 +603,7 @@ export default {
 	flex-direction: column;
 	border: 1px dashed lightgray;
 }
-/* 顶部按钮 */
-.videoBtn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 /* 下部视频 */
 .video {
 	border: 1px dashed lightgray;
@@ -601,12 +618,7 @@ export default {
 	flex-direction: column;
 	border: 1px dashed lightgray;
 }
-/* 顶部按钮 */
-.chatBtn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 /* 自定义id */
 .flexIdArea {
 	display: flex;

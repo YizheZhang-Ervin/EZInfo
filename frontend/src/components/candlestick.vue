@@ -2,7 +2,7 @@
   <section class="whole">
     <!-- 小屏幕 -->
     <div id="smallscreen">
-      <h3><i class="el-icon-warning"></i>Please use larger screen(>800*700) for better experience!</h3>
+      <h3><i class="el-icon-warning"></i>Please use larger screen(>600*600) for better experience!</h3>
     </div>
     <!-- 大屏幕 -->
     <el-card class="cards" shadow="hover">
@@ -375,12 +375,20 @@ export default {
   #smallscreen {
     display: none;
   }
+  .headerArea{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 @media (max-width: 600px) {
   #bigscreen {
     display: block;
   }
   #smallscreen {
+    display: block;
+  }
+  .headerArea{
     display: block;
   }
 }
@@ -390,6 +398,9 @@ export default {
     display: block;
   }
   #smallscreen {
+    display: block;
+  }
+  .headerArea{
     display: block;
   }
 }
@@ -409,12 +420,6 @@ export default {
   background-color: beige;
   height:60em;
   width: 100vw;
-}
-
-.headerArea{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .btn{
