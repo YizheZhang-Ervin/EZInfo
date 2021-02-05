@@ -76,7 +76,7 @@ export default {
 }
 
 .el-divider{
-  background-color: #142044!important;
+  background-color: lightgrey!important;
 }
 
 .el-divider__text,

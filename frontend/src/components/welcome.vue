@@ -8,7 +8,6 @@
         <p class="name">Hi, I am Yizhe Zhang</p>
         <p class="intro">A Front End &amp; Full Stack Developer</p>
         <router-link to="/home"><el-button plain class="btn" >Take A Look</el-button></router-link>
-        
     </main>
     <footer>
         <p>Yizhe(Ervin) Zhang |&nbsp;
@@ -48,29 +47,69 @@ header {
   top:1%;
   padding-left:15px;
   color: beige;
-  font-size: 2em;
   height: 5vh;
   width: 100vw;
 }
 
-main {
-  display: flex;
-  align-items:flex-end;
-  justify-content: center;
-  flex-direction: column;
-  height: 90vh;
-  width: 85vw;
-  color: beige;
+@media (min-width:500px){
+  header{
+    font-size: 2em;
+  }
+  main {
+    display: flex;
+    align-items:flex-end;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 85vw;
+    color: beige;
+  }
+  .name{
+    font-size: 2.5em;
+    line-height: 50px;
+  }
+  .intro{
+    font-size: 1.1em;
+    line-height: 50px;
+  }
+  footer{
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width:500px){
+  header{
+    font-size: 1em;
+  }
+  main {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 100vw;
+    color: beige;
+  }
+  .name{
+    font-size: 1.5em;
+    line-height: 50px;
+  }
+  .intro{
+    font-size: 0.7em;
+    line-height: 50px;
+  }
+  footer{
+    font-size: 0.7em;
+    text-align: center;
+  }
 }
 
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position:fixed;
   bottom:1%;
   color: beige;
-  font-size: 1.1em;
   height: 5vh;
   width: 100vw;
 }
@@ -78,18 +117,6 @@ footer {
 a {
   text-decoration: none;
   color: beige;
-}
-
-p{
-    line-height: 50px;
-}
-
-.name{
-    font-size: 2.5em;
-}
-
-.intro{
-    font-size: 1.1em;
 }
 
 .btn{

@@ -24,20 +24,41 @@ def initEngine(whichone):
 
 def getDataFromWeb(request):
     engine = initEngine("fromweb")
-    dt = ts.get_hist_data(code='sh',start='2019-01-01',end='2021-02-04')
+    # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
+    dt = ts.get_hist_data(code='sh',start='2020-02-04',end='2021-12-31')
     dt.to_sql(name='shindex',con=engine,if_exists='append',dtype={'code':VARCHAR(dt.index.get_level_values('date').str.len().max())})
+    # return JsonResponse({"rst":"success"},safe=False)
     return redirect('/home/')
 
 def getDataFromDB(request):
-    tableName='shindex'
+    try:
+        engine = initEngine("fromDB")
+        cursor = engine.cursor()
+        sql = "SELECT date,open,close,low,high,volume FROM shindex order by date ASC"
+        rows = cursor.execute(sql)  
+        data = cursor.fetchall()
+        rst = []
+        [rst.append([i[0],i[1],i[2],i[3],i[4],i[5]]) for i in data]
+        engine.commit()
+        cursor.close()
+        engine.close()
+        if len(rst)==0:
+            getDataFromCSV()
+        return JsonResponse(rst,safe=False)
+    except Exception:
+        getDataFromCSV()
+
+def getDataFromCSV(request):
+    engine = initEngine("fromweb")
+    # engine = create_engine(f"mysql+pymysql://root:root001@127.0.0.1:3306/djangodb")
+    data = pd.read_csv("stockData.csv")
+    data.to_sql(name='shindex',con=engine,if_exists='append',index=False)
+    # return JsonResponse({"rst":"success"},safe=False)
+    return redirect('/home/')
+
+def DBToCSV():
     engine = initEngine("fromDB")
-    cursor = engine.cursor()
-    sql = f"SELECT date,open,close,low,high,volume FROM {tableName} order by date ASC"
-    rows = cursor.execute(sql)  
-    data = cursor.fetchall()
-    rst = []
-    [rst.append([i[0],i[1],i[2],i[3],i[4],i[5]]) for i in data]
-    engine.commit()
-    cursor.close()
-    engine.close()
-    return JsonResponse(rst,safe=False)
+    # engine = pymysql.connect(host='127.0.0.1',port=3306,user='root',password="root001",database='djangodb')
+    sql = "SELECT date,open,close,low,high,volume FROM shindex order by date ASC"
+    data = pd.read_sql(sql,engine)
+    data.to_csv("stockData.csv",index=0)

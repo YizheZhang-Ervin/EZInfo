@@ -3,7 +3,11 @@
     <el-card class="cards" shadow="hover">
         <div slot="header" class="headerArea">
             <span>Shanghai Composite Index</span>
-            <el-button class="btn"><a href="/api/ssec/update/">Update</a></el-button>
+            <section>
+              <el-button class="btn"><a href="/api/ssec/web/">From DB</a></el-button>
+              <el-button class="btn"><a href="/api/ssec/csv/">From CSV</a></el-button>
+              <el-button class="btn"><a href="/api/ssec/db/">From Web</a></el-button>
+            </section>
         </div>
         <div id="echarts"></div>
     </el-card>
@@ -26,7 +30,7 @@ export default {
   },
   methods: {
     get() {
-      axios.get(`/api/ssec/`).then(
+      axios.get(`/api/ssec/db/`).then(
         (response) => {
           if (response.data.error == "error") {
             console.log("bakend error");

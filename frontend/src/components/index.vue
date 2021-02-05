@@ -14,14 +14,32 @@
           <i class="ezlogo"></i>
           <router-link to="/">EZ Info</router-link>
         </el-menu-item>
-        <el-menu-item index="aboutme">
-          <i class="el-icon-user-solid"></i>
-          About Me
-        </el-menu-item>
+        <el-submenu index="aboutme">
+          <template slot="title">
+            <i class="el-icon-user-solid"></i>
+            <a @click="changePage2('aboutme')" class="menuwords">About Me</a>
+          </template>
+          <el-menu-item index="aboutme-technology">
+            <i class="el-icon-s-platform"></i>
+            <a href="#technology">Technology</a>
+          </el-menu-item>
+          <el-menu-item index="aboutme-certificates">
+            <i class="el-icon-medal"></i>
+            <a href="#certificate">Certificates</a>
+          </el-menu-item>
+          <el-menu-item index="aboutme-education">
+            <i class="el-icon-school"></i>
+            <a href="#education">Education</a>
+          </el-menu-item>
+          <el-menu-item index="aboutme-projects">
+            <i class="el-icon-notebook-1"></i>
+            <a href="#project">Projects</a>
+          </el-menu-item>
+        </el-submenu>
         <el-submenu index="visual">
           <template slot="title">
             <i class="el-icon-data-line"></i>
-            Visualization
+            <span class="menuwords">Visualization</span>
           </template>
           <el-menu-item index="coding">
             <i class="el-icon-data-analysis"></i>Visual Coding
@@ -31,7 +49,9 @@
           </el-menu-item>
         </el-submenu>
         <el-submenu index="tool">
-          <template slot="title"><i class="el-icon-s-tools"></i>Tools</template>
+          <template slot="title"><i class="el-icon-s-tools"></i>
+          <span class="menuwords">Tools</span>   
+          </template>
           <el-menu-item index="translator"
             ><i class="el-icon-edit"></i>Translator</el-menu-item
           >
@@ -49,18 +69,13 @@
         <el-submenu index="resources">
           <template slot="title">
             <i class="el-icon-folder-opened"></i>
-            Resources
+            <span class="menuwords">Resources</span>
           </template>
           <el-menu-item index="link"
             ><i class="el-icon-link"></i>Links</el-menu-item
           >
         </el-submenu>
       </el-menu>
-      <!-- 位置提醒框 -->
-      <h3 class="notify" @click="changeNotification" v-show="notificationShow">
-        <i class="el-icon-caret-top"></i>
-        {{ userLocation }}
-      </h3>
     </header>
     <main class="main">
       <Translator v-show="translatorShow"></Translator>
@@ -100,7 +115,6 @@ export default {
       userLocation: "",
       frameSrc: "",
       roomtype: "",
-      notificationShow: true,
       translatorShow: false,
       codingShow: false,
       videochatShow: false,
@@ -114,20 +128,39 @@ export default {
     this.getLocation();
   },
   methods: {
+    showNotification(){
+      this.$notify({
+          title: 'Location Safety Notification',
+          message: this.userLocation,
+          type: 'success',
+          duration: 5000,
+        });
+    },
     sendNotification(position) {
       let latitude = position.coords.latitude.toFixed(2);
       let longitude = position.coords.longitude.toFixed(2);
       latitude = latitude > 0 ? latitude + " N" : -latitude + " S";
       longitude = longitude > 0 ? longitude + " E" : -longitude + " W";
-      this.userLocation = `Location Safety Notification: You are now at (${latitude}, ${longitude}).`;
+      this.userLocation = `You are now at (${latitude}, ${longitude})`;
+      this.showNotification();
     },
     getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.sendNotification);
       }
     },
-    changeNotification() {
-      this.notificationShow = false;
+    changePage2(page){
+      if(page=="aboutme"){
+        this.translatorShow = false;
+        this.codingShow = false;
+        this.videochatShow = false;
+        this.excelShow = false;
+        this.aboutmeShow = true;
+        this.candlestickShow = false;
+        this.linkShow = false;
+      }else{
+        this.aboutmeShow = false;
+      }
     },
     changePage(key) {
       if (key == "aboutme") {
@@ -198,31 +231,32 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  min-height: 7vh;
+@media (min-width: 810px){
+  .menuwords{
+    display: inline;
+  }
+}
+
+@media (max-width: 810px){
+  .menuwords{
+    display: none;
+  }
+}
+
+header {
+  max-height: 7vh;
 }
 
 .main {
   min-height: 93vh;
 }
 
-.footer {
-  background-color: #000;
-  color: gold;
-  min-height: 7vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 a {
   text-decoration: none;
-  color: gold;
+  color: darkgray;
 }
-.notify {
-  background-image: linear-gradient(45deg, lightgreen, white);
+
+.menu{
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

@@ -12,15 +12,15 @@
       <el-divider content-position="center">Ervin</el-divider>
       <el-menu-item index="name">
         <i class="el-icon-star-off"></i>
-        <span slot="title">Yizhe Zhang</span>
+        <a href="#summary" slot="title">Yizhe Zhang</a>
       </el-menu-item>
       <el-menu-item index="school">
         <i class="el-icon-school"></i>
-        <span slot="title">NEU</span>
+        <a href="#education" slot="title">NEU</a>
       </el-menu-item>
       <el-menu-item index="pre">
         <i class="el-icon-s-platform"></i>
-        <span slot="title">Information Systems</span>
+        <a href="#certificate" slot="title">Information Systems</a>
       </el-menu-item>
       <el-submenu index="contact">
         <template slot="title">
@@ -67,27 +67,29 @@
       </el-submenu>
       <el-menu-item index="collapse" @click="changeCollapse">
         <i class="el-icon-s-fold"></i>
-        <span >Hide</span>
+        <span>Hide</span>
       </el-menu-item>
     </el-menu>
     <!-- 右侧 -->
     <div class="rightArea">
       <!-- carousel -->
       <el-carousel class="carousel" type="card">
-        <el-carousel-item v-for="item in carousel" :key="item" style="display:flex;justify-content:center;">
-          <img :src="item" style="height:300px"/>
+        <el-carousel-item
+          v-for="item in carousel"
+          :key="item"
+          style="display: flex; justify-content: center"
+        >
+          <img :src="item" style="height: 300px" />
         </el-carousel-item>
       </el-carousel>
       <!-- Summary -->
+      <a name="summary"></a>
+      <el-divider></el-divider>
       <el-divider content-position="left">
         <i class="el-icon-star-on"></i> Summary
       </el-divider>
       <section class="summary">
-        <el-image
-          :src="self.summary"
-          fit="contain"
-          class="summary-img"
-        ></el-image>
+        <!-- <el-image :src="self.summary" fit="contain" class="summary-img" ></el-image> -->
         <div class="card-outer">
           <el-card
             shadow="hover"
@@ -105,35 +107,51 @@
         </div>
       </section>
       <!-- Technology -->
+      <a name="technology"></a>
+      <el-divider></el-divider>
       <el-divider content-position="left">
         <i class="el-icon-s-platform"></i> Technology</el-divider
       >
       <section>
         <el-collapse v-model="collapseTechnology">
-        <el-collapse-item :title="tech.title" :name="tech.title" v-for="tech in technology" :key="tech.title">
-          <div v-for="tt in tech.content" :key="tt">
-            <p class="techs">{{ tt }}</p>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
+          <el-collapse-item
+            :title="tech.title"
+            :name="tech.title"
+            v-for="tech in technology"
+            :key="tech.title"
+          >
+            <div v-for="tt in tech.content" :key="tt">
+              <p class="techs">{{ tt }}</p>
+            </div>
+          </el-collapse-item>
+        </el-collapse>
       </section>
       <!-- Certificates -->
+      <a name="certificate"></a>
+      <el-divider></el-divider>
       <el-divider content-position="left">
         <i class="el-icon-medal"></i> Certificates</el-divider
       >
       <section>
         <el-collapse v-model="collapseCertificate">
-        <el-collapse-item :title="cer.title" :name="cer.title" v-for="cer in certificates" :key="cer.title">
-          <div>
-            <p>{{cer.time}}</p>
-            <a target="_blank" :href="cer.href">Certificate Link</a>
-            <br/><br/>
-            <el-image :src="cer.img"></el-image>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
+          <el-collapse-item
+            :title="cer.title"
+            :name="cer.title"
+            v-for="cer in certificates"
+            :key="cer.title"
+          >
+            <div>
+              <p>{{ cer.time }}</p>
+              <a target="_blank" :href="cer.href">Certificate Link</a>
+              <br /><br />
+              <el-image :src="cer.img"></el-image>
+            </div>
+          </el-collapse-item>
+        </el-collapse>
       </section>
       <!-- Education -->
+      <a name="education"></a>
+      <el-divider></el-divider>
       <el-divider content-position="left">
         <i class="el-icon-school"></i> Education</el-divider
       >
@@ -149,27 +167,64 @@
             <a target="_blank" :href="ed.href">School Link</a>
           </div>
           <div>
-            <p>{{ed.degree}}</p>
-            <p>{{ed.time}}</p>
-            <br/>
+            <p>{{ ed.degree }}</p>
+            <p>{{ ed.time }}</p>
+            <br />
             <el-image :src="ed.img"></el-image>
           </div>
         </el-card>
       </section>
       <!-- Projects -->
+      <a name="project"></a>
+      <el-divider></el-divider>
       <el-divider content-position="left">
-        <i class="el-icon-mobile-phone"></i> Projects</el-divider
+        <i class="el-icon-notebook-1"></i> Projects</el-divider
       >
       <section>
         <el-collapse v-model="collapsePorject">
-        <el-collapse-item :title="prj.title" :name="prj.title" v-for="prj in project" :key="prj.title">
-          <div class="flex-card-title">
-            <p>{{prj.tech}}</p>
-            <p>{{prj.time}}</p>
-            <a target="_blank" :href="prj.href">Github Link</a>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
+          <!-- 2021 -->
+          <el-divider>2021</el-divider>
+          <el-collapse-item
+            :title="prj.title"
+            :name="prj.title"
+            v-for="prj in project2021"
+            :key="prj.title"
+          >
+            <div class="flex-card-title">
+              <p>{{ prj.tech }}</p>
+              <p>{{ prj.time }}</p>
+              <a target="_blank" :href="prj.href">Github Link</a>
+            </div>
+          </el-collapse-item>
+          <!-- 2020 -->
+          <el-divider>2020</el-divider>
+          <el-collapse-item
+            :title="prj.title"
+            :name="prj.title"
+            v-for="prj in project2020"
+            :key="prj.title"
+          >
+            <div class="flex-card-title">
+              <p>{{ prj.tech }}</p>
+              <p>{{ prj.time }}</p>
+              <a target="_blank" :href="prj.href">Github Link</a>
+            </div>
+          </el-collapse-item>
+          <!-- 2019 -->
+          <el-divider>2019</el-divider>
+          <el-collapse-item
+            :title="prj.title"
+            :name="prj.title"
+            v-for="prj in project2019"
+            :key="prj.title"
+          >
+            <div class="flex-card-title">
+              <p>{{ prj.tech }}</p>
+              <p>{{ prj.time }}</p>
+              <a target="_blank" :href="prj.href">Github Link</a>
+            </div>
+          </el-collapse-item>
+        </el-collapse>
       </section>
     </div>
   </section>
@@ -295,184 +350,194 @@ export default {
           href: "https://www.udemy.com/certificate/UC-D2TDUN3J/",
         },
       ],
-      education:[
+      education: [
         {
-          title:"Northeastern University, Boston, MA, United States",
-          time:"2019 - Present",
-          degree:"Master of Science in Information Systems",
-          href:"https://www.northeastern.edu/",
-          img:require("../assets/static/img/school/neu.jpg")
+          title: "Northeastern University, Boston, MA, United States",
+          time: "2019 - Present",
+          degree: "Master of Science in Information Systems",
+          href: "https://www.northeastern.edu/",
+          img: require("../assets/static/img/school/neu.jpg"),
         },
         {
-          title:"University of California, Los Angeles, CA, United States",
-          time:"2017",
-          degree:"Certificate of International Business & Leadership Management",
-          href:"https://www.ucla.edu/",
-          img:require("../assets/static/img/school/ucla.jpg")
+          title: "University of California, Los Angeles, CA, United States",
+          time: "2017",
+          degree:
+            "Certificate of International Business & Leadership Management",
+          href: "https://www.ucla.edu/",
+          img: require("../assets/static/img/school/ucla.jpg"),
         },
         {
-          title:"Nantong University, Nantong, Jiangsu, China",
-          time:"2015 - 2019",
-          degree:"Bachelor of Management in Information Management and Information System",
-          href:"https://www.ntu.edu.cn/main.htm",
-          img:require("../assets/static/img/school/ntu.jpg")
-        },
-        ],
-      project:[
-        {
-          title:"FinTech Algorithms",
-          time:"Jan 2021 - Future",
-          tech:"Vue, Django, Echarts, ElementUI, peerjs",
-          href:"https://github.com/YizheZhang-Ervin/EZ_Info"
-        },
-        {
-          title:"YeStock",
-          time:"Jan 2021 - April 2021",
-          tech:"Vue, Flask, ElementUI, Echarts",
-          href:"https://github.com/YizheZhang-Ervin/FinTech_YeStock"
-        },
-        {
-          title:"EGGroup",
-          time:"Jan 2021 - April 2021",
-          tech:"Vue, Express, Mysql, ElementUI",
-          href:"https://github.com/YizheZhang-Ervin/EGGroup_V2"
-        },
-        {
-          title:"Sharing Bike System",
-          time:"Jan 2021 - Feb 2021",
-          tech:"Django, Sqlite, Echarts",
-          href:"https://github.com/YizheZhang-Ervin/SharingBike"
-        },
-        {
-          title:"Personal Website V3.0",
-          time:"Oct 2020 - Feb 2021",
-          tech:"Angular, Django, Sqlite",
-          href:"https://github.com/YizheZhang-Ervin/EasyEZ_V3"
-        },
-        {
-          title:"FinTech - Fixed Income Security (NS Model)",
-          time:"Sept 2020 - Nov 2020",
-          tech:"Vue, Flask, Echarts",
-          href:"https://github.com/YizheZhang-Ervin/FinTech_FishGroup"
-        },
-        {
-          title:"LinkedIn Network New Feature",
-          time:"Sept 2020 - Nov 2020",
-          tech:"Sketch, Wireframe, Prototype",
-          href:"https://github.com/YizheZhang-Ervin/"
-        },
-        {
-          title:"Screen Time App",
-          time:"Sept 2020 - Nov 2020",
-          tech:"Sketch, Wireframe, Prototype",
-          href:"https://github.com/YizheZhang-Ervin/"
-        },
-        {
-          title:"Quantitative Nutriology",
-          time:"May 2020 - Sept 2020",
-          tech:"Python",
-          href:"https://github.com/YizheZhang-Ervin/Knowledge_QuantitativeNutriology"
-        },
-        {
-          title:"Cryptography",
-          time:"May 2020 - Sept 2020",
-          tech:"Python",
-          href:"https://github.com/YizheZhang-Ervin/Knowledge_Cryptography"
-        },
-        {
-          title:"Cloud Storage App",
-          time:"Apr 2020 - May 2020",
-          tech:"Django, Bootstrap, Sqlite",
-          href:"https://github.com/YizheZhang-Ervin/IMISCloud"
-        },
-        {
-          title:"Personal Website V2.0",
-          time:"Apr 2020 - May 2020",
-          tech:"Bootstrap, Django, Mysql",
-          href:"https://github.com/YizheZhang-Ervin/EasyEZ_V2"
-        },
-        {
-          title:"Home Rent Website",
-          time:"Jan 2020 - Apr 2020",
-          tech:"Angular, Express, MongoDB, Ng-Zorro",
-          href:"https://github.com/YizheZhang-Ervin/MeteorHome"
-        },
-        {
-          title:"To do List",
-          time:"Jan 2020 - Apr 2020",
-          tech:"Angular, Express, MongoDB",
-          href:"https://github.com/YizheZhang-Ervin/Course_WebDesign/tree/master/Todolist"
-        },
-        {
-          title:"MA Education Data Analysis",
-          time:"Jan 2020 - Apr 2020",
-          tech:"Python (Jupyter Notebook, Numpy, Pandas, Scipy, Sklearn, Matplotlib)",
-          href:""
-        },
-        {
-          title:"Harrier Web Hunter",
-          time:"Mar 2020 - Apr 2020",
-          tech:"Flask, requests",
-          href:"https://github.com/YizheZhang-Ervin/Harrier"
-        },
-        {
-          title:"FinTech - Gold Visualization",
-          time:"Mar 2020 - Apr 2020",
-          tech:"Tornado, Bootstrap, Sqlite",
-          href:"https://github.com/YizheZhang-Ervin/FinTech_BEA"
-        },
-        {
-          title:"Personal Website V1.0",
-          time:"Jan 2020 - Mar 2020",
-          tech:"Django, Mysql",
-          href:"https://github.com/YizheZhang-Ervin/EasyEZ_V1"
-        },
-        {
-          title:"Hotel Database System",
-          time:"Sept 2019 - Dec 2019",
-          tech:"Java, Sqlserver, Power BI",
-          href:"https://github.com/YizheZhang-Ervin/Course_InfoSystems"
-        },
-        {
-          title:"Hospital Information System",
-          time:"Sept 2019 - Dec 2019",
-          tech:"Java",
-          href:"https://github.com/YizheZhang-Ervin/Course_InfoSystems"
-        },
-        {
-          title:"Gamification Used by Exploratory Search System (GUESS)",
-          time:"Sept 2018 - Jun 2019",
-          tech:"Axure RP",
-          href:"https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=XDQB202004004&v=QvJXxfJ04mUgJFeK46HZB3jGJp5eqMM7Qdsj4Tv20LhbWiFXkr1pIAgL1aukIgd4"
-        },
-        {
-          title:"Imitate Douban Website",
-          time:"Sept 2018 - Jan 2019",
-          tech:"JSP",
-          href:"https://github.com/YizheZhang-Ervin/Course_JavaJSP"
-        },
-        {
-          title:"Little Iron Pot App",
-          time:"Mar 2018 - Jun 2018",
-          tech:"MIT App Inventor",
-          href:""
-        },
-        {
-          title:"Tank Battle Game",
-          time:"Mar 2018 - Jun 2018",
-          tech:"Java AWT",
-          href:"https://github.com/YizheZhang-Ervin/Course_JavaJSP"
+          title: "Nantong University, Nantong, Jiangsu, China",
+          time: "2015 - 2019",
+          degree:
+            "Bachelor of Management in Information Management and Information System",
+          href: "https://www.ntu.edu.cn/main.htm",
+          img: require("../assets/static/img/school/ntu.jpg"),
         },
       ],
-      carousel:[
+      project2021: [
+        {
+          title: "FinTech Algorithms",
+          time: "Jan 2021 - Future",
+          tech: "Vue, Django, Echarts, ElementUI, peerjs",
+          href: "https://github.com/YizheZhang-Ervin/EZ_Info",
+        },
+        {
+          title: "YeStock",
+          time: "Jan 2021 - April 2021",
+          tech: "Vue, Flask, ElementUI, Echarts",
+          href: "https://github.com/YizheZhang-Ervin/FinTech_YeStock",
+        },
+        {
+          title: "EGGroup",
+          time: "Jan 2021 - April 2021",
+          tech: "Vue, Express, Mysql, ElementUI",
+          href: "https://github.com/YizheZhang-Ervin/EGGroup_V2",
+        },
+        {
+          title: "Sharing Bike System",
+          time: "Jan 2021 - Feb 2021",
+          tech: "Django, Sqlite, Echarts",
+          href: "https://github.com/YizheZhang-Ervin/SharingBike",
+        },
+      ],
+      project2020: [
+        {
+          title: "Personal Website V3.0",
+          time: "Oct 2020 - Feb 2021",
+          tech: "Angular, Django, Sqlite",
+          href: "https://github.com/YizheZhang-Ervin/EasyEZ_V3",
+        },
+        {
+          title: "FinTech - Fixed Income Security (NS Model)",
+          time: "Sept 2020 - Nov 2020",
+          tech: "Vue, Flask, Echarts",
+          href: "https://github.com/YizheZhang-Ervin/FinTech_FishGroup",
+        },
+        {
+          title: "LinkedIn Network New Feature",
+          time: "Sept 2020 - Nov 2020",
+          tech: "Sketch, Wireframe, Prototype",
+          href: "https://github.com/YizheZhang-Ervin/",
+        },
+        {
+          title: "Screen Time App",
+          time: "Sept 2020 - Nov 2020",
+          tech: "Sketch, Wireframe, Prototype",
+          href: "https://github.com/YizheZhang-Ervin/",
+        },
+        {
+          title: "Quantitative Nutriology",
+          time: "May 2020 - Sept 2020",
+          tech: "Python",
+          href:
+            "https://github.com/YizheZhang-Ervin/Knowledge_QuantitativeNutriology",
+        },
+        {
+          title: "Cryptography",
+          time: "May 2020 - Sept 2020",
+          tech: "Python",
+          href: "https://github.com/YizheZhang-Ervin/Knowledge_Cryptography",
+        },
+        {
+          title: "Cloud Storage App",
+          time: "Apr 2020 - May 2020",
+          tech: "Django, Bootstrap, Sqlite",
+          href: "https://github.com/YizheZhang-Ervin/IMISCloud",
+        },
+        {
+          title: "Personal Website V2.0",
+          time: "Apr 2020 - May 2020",
+          tech: "Bootstrap, Django, Mysql",
+          href: "https://github.com/YizheZhang-Ervin/EasyEZ_V2",
+        },
+        {
+          title: "Home Rent Website",
+          time: "Jan 2020 - Apr 2020",
+          tech: "Angular, Express, MongoDB, Ng-Zorro",
+          href: "https://github.com/YizheZhang-Ervin/MeteorHome",
+        },
+        {
+          title: "To do List",
+          time: "Jan 2020 - Apr 2020",
+          tech: "Angular, Express, MongoDB",
+          href:
+            "https://github.com/YizheZhang-Ervin/Course_WebDesign/tree/master/Todolist",
+        },
+        {
+          title: "MA Education Data Analysis",
+          time: "Jan 2020 - Apr 2020",
+          tech:
+            "Python (Jupyter Notebook, Numpy, Pandas, Scipy, Sklearn, Matplotlib)",
+          href: "",
+        },
+        {
+          title: "Harrier Web Hunter",
+          time: "Mar 2020 - Apr 2020",
+          tech: "Flask, requests",
+          href: "https://github.com/YizheZhang-Ervin/Harrier",
+        },
+        {
+          title: "FinTech - Gold Visualization",
+          time: "Mar 2020 - Apr 2020",
+          tech: "Tornado, Bootstrap, Sqlite",
+          href: "https://github.com/YizheZhang-Ervin/FinTech_BEA",
+        },
+        {
+          title: "Personal Website V1.0",
+          time: "Jan 2020 - Mar 2020",
+          tech: "Django, Mysql",
+          href: "https://github.com/YizheZhang-Ervin/EasyEZ_V1",
+        },
+      ],
+      project2019: [
+        {
+          title: "Hotel Database System",
+          time: "Sept 2019 - Dec 2019",
+          tech: "Java, Sqlserver, Power BI",
+          href: "https://github.com/YizheZhang-Ervin/Course_InfoSystems",
+        },
+        {
+          title: "Hospital Information System",
+          time: "Sept 2019 - Dec 2019",
+          tech: "Java",
+          href: "https://github.com/YizheZhang-Ervin/Course_InfoSystems",
+        },
+        {
+          title: "Gamification Used by Exploratory Search System (GUESS)",
+          time: "Sept 2018 - Jun 2019",
+          tech: "Axure RP",
+          href:
+            "https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=XDQB202004004&v=QvJXxfJ04mUgJFeK46HZB3jGJp5eqMM7Qdsj4Tv20LhbWiFXkr1pIAgL1aukIgd4",
+        },
+        {
+          title: "Imitate Douban Website",
+          time: "Sept 2018 - Jan 2019",
+          tech: "JSP",
+          href: "https://github.com/YizheZhang-Ervin/Course_JavaJSP",
+        },
+        {
+          title: "Little Iron Pot App",
+          time: "Mar 2018 - Jun 2018",
+          tech: "MIT App Inventor",
+          href: "",
+        },
+        {
+          title: "Tank Battle Game",
+          time: "Mar 2018 - Jun 2018",
+          tech: "Java AWT",
+          href: "https://github.com/YizheZhang-Ervin/Course_JavaJSP",
+        },
+      ],
+      carousel: [
         require("../assets/static/img/projects/1.png"),
         require("../assets/static/img/projects/2.jpg"),
         require("../assets/static/img/projects/3.png"),
       ],
       navCollapse: false,
-      collapseCertificate:"Data Analytics Consulting Virtual Internship",
-      collapsePorject:"FinTech Algorithms",
-      collapseTechnology:"Development"
+      collapseCertificate: "Data Analytics Consulting Virtual Internship",
+      collapsePorject: "FinTech Algorithms",
+      collapseTechnology: "Development",
     };
   },
   mounted() {},
@@ -512,7 +577,7 @@ export default {
   font-size: 0.8em;
   max-width: 200px;
   overflow-y: auto;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .nav-img {
@@ -534,13 +599,13 @@ export default {
   background-color: beige;
 }
 
-.card-outer {
+/* .card-outer {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 50vw;
-}
+} */
 
 .summary {
   display: flex;
@@ -557,14 +622,14 @@ a {
   line-height: 30px;
 }
 
-.flex-card-title{
+.flex-card-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.carousel-pic{
-  height:300px;
-  width:300px;
+.carousel-pic {
+  height: 300px;
+  width: 300px;
 }
 </style>

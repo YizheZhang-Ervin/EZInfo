@@ -7,12 +7,14 @@ import Index  from './components/index.vue';
 import Welcome from './components/welcome.vue';
 
 const routes=[
-    {path:'',component:Welcome},
+    
     {path:'/home',component:Index},
+    {path:'*',component:Welcome},
 ]
 
 
 const router=new VueRouter({
+    mode: 'history',
     routes
 });
 

@@ -6,7 +6,7 @@ cd frontend
 npm install  
 npm run build  
 cd backend  
-workon env_develop  
+workon env_develop  or source ./activate  
 move temp_static folder contents to static folder  
 pip install -r requirements.txt  
 python manage.py runserver  
@@ -24,8 +24,8 @@ python manage.py runserver
   
 # Architecture  
 Front End: Vue CLI + Vue router + ElementUI  
-Node Modules: Axios + Echarts + PeerJS  
-Back End: Django RESTful + translate  
+Node Modules: Echarts + PeerJS  
+Back End: Django RESTful + Mysql + translate  
   
 ## BackEnd  
 ### install django framework
