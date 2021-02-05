@@ -1,25 +1,68 @@
 # YeStock
 YeStock 
   
+# Run
+cd frontend  
+npm install  
+npm run build  
+cd backend  
+workon env_develop  
+move temp_static folder contents to static folder  
+pip install -r requirements.txt  
+python manage.py runserver  
+  
 # Features 
-- Online Coding with output and charts  
-- FinTech Algorithms  
-- Geolocation with location  
-- Translator   
-- Excel with IO/New/ComputeExpression  
-- VideoChat + Video Player with drag/drop + Status parameters  
-- Group  
+- Welcome Page  
+- About me  
+- Visualization: Online Coding with output and charts  
+- Visualization: CandleStick Charts  
+- Tools: Geolocation with location  
+- Tools: Translator   
+- Tools: Excel with IO/New/ComputeExpression  
+- Tools: VideoChat + Video Player with drag/drop + Status parameters  
+- Resources  
   
 # Architecture  
 Front End: Vue CLI + Vue router + ElementUI  
 Node Modules: Axios + Echarts + PeerJS  
-Back End: Flask + translate  
-Deploy: Heroku  
+Back End: Django RESTful + translate  
   
-# Run  
-cd yestock -> npm run build  
-move static/favicon to static/img/favicon  
-python -m flask run  
-open http://127.0.0.1:5000/  
+## BackEnd  
+### install django framework
+pip install django  
+pip install djangorestframework  
+pip install django-cors-headers   
+pip install pymysql  
+pip install sqlalchemy  
   
+### start project
+django-admin startproject xxProject  
+python manage.py startapp xxApp  
+
+### other commands
+python manage.py collectstatic  
+python manage.py makemigrations  
+python manage.py migrate  
+python manage.py createsuperuser(ez-ez)  
+python manage.py runserver  
+   
+### Dependency List  
+Dependency libs: pipreqs ./   
+
+## FrontEnd
+### install 
+npm install vue-cli  
+npm install vue-router  
+npm install element-ui  
+npm install echarts  
+npm install axios  
+  
+### start project  
+vue create xxPrj  
+  
+### other commands  
+vue ui -> set publicpath: /static/   
+npm install  
+npm serve   
+npm build  
   
