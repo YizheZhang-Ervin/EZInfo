@@ -345,7 +345,7 @@ export default {
 				video: {
 					cursor: "always",
 				},
-				audio: false,
+				audio: true,
 			});
 			let selfv = document.getElementById("selfv");
 			selfv.srcObject = this.localStream;

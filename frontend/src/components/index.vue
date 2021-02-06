@@ -20,20 +20,26 @@
             <a @click="changePage2('aboutme')" class="menuwords">About Me</a>
           </template>
           <el-menu-item index="aboutme-technology">
+            <a href="#technology" class="menulink">
             <i class="el-icon-s-platform"></i>
-            <a href="#technology">Technology</a>
+            <span slot="title">Technology</span>
+            </a>
           </el-menu-item>
           <el-menu-item index="aboutme-certificates">
+            <a href="#certificate" class="menulink">
             <i class="el-icon-medal"></i>
-            <a href="#certificate">Certificates</a>
+            <span slot="title">Certificates</span>
+            </a>
           </el-menu-item>
           <el-menu-item index="aboutme-education">
+            <a href="#education" class="menulink">
             <i class="el-icon-school"></i>
-            <a href="#education">Education</a>
+            <span slot="title">Education</span></a>
           </el-menu-item>
           <el-menu-item index="aboutme-projects">
+            <a href="#project" class="menulink">
             <i class="el-icon-notebook-1"></i>
-            <a href="#project">Projects</a>
+            <span slot="title">Projects</span></a>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="visual">
@@ -258,5 +264,10 @@ a {
 
 .menu{
   display: flex;
+}
+
+.menulink{
+	display: inline-block;
+	width: 100%;
 }
 </style>
