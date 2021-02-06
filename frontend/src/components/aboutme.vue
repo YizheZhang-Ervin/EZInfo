@@ -100,6 +100,8 @@
 						<div>
 							{{ s.detail }}
 						</div>
+						<br/>Top3:  
+						<el-tag :type="tag.type" v-for="tag in s.tags" :key="tag.label">{{tag.label}}</el-tag>
 					</el-card>
 				</div>
 			</section>
@@ -110,7 +112,7 @@
 				<i class="el-icon-s-platform"></i> Technology</el-divider
 			>
 			<section>
-				<el-collapse v-model="collapseTechnology">
+				<el-collapse v-model="collapseTechnology" accordion>
 					<el-collapse-item
 						:title="tech.title"
 						:name="tech.title"
@@ -178,7 +180,7 @@
 				<i class="el-icon-notebook-1"></i> Projects</el-divider
 			>
 			<section>
-				<el-collapse v-model="collapsePorject">
+				<el-collapse v-model="collapseProject">
 					<!-- 2021 -->
 					<el-divider>2021</el-divider>
 					<el-collapse-item
@@ -239,6 +241,9 @@ export default {
                     Be familiar with mainstream frameworks such as React/Angular/Vue(Front-End), Django/Express(Back-End).
                     Developed several individual&team projects.
                     Good at optimizing user experience and improving project quality through data analysis.`,
+					tags:[{type:"",label:"Meteor Home Rent"},
+					{type:"success",label:"Sharing Bike System"},
+					{type:"info",label:"EZ Info Blog"}]
 				},
 				{
 					title: "Soft Power",
@@ -247,6 +252,9 @@ export default {
                         Have strong learning ability and can quickly master the knowledge structure.
                         Love to track the latest Front-End technology.
                         Rigorous, neat and high-quality code style.`,
+					tags:[{type:"info",label:"Modest"},
+					{type:"",label:"Gentle"},
+					{type:"success",label:"Cautious"}]
 				},
 			],
 			self: {
@@ -374,10 +382,10 @@ export default {
 			],
 			project2021: [
 				{
-					title: "FinTech Algorithms",
+					title: "EZ Info",
 					time: "Jan 2021 - Future",
 					tech: "Vue, Django, Echarts, ElementUI, peerjs",
-					href: "https://github.com/YizheZhang-Ervin/EZ_Info",
+					href: "https://github.com/YizheZhang-Ervin/EZInfo",
 				},
 				{
 					title: "YeStock",
@@ -394,7 +402,7 @@ export default {
 				{
 					title: "Sharing Bike System",
 					time: "Jan 2021 - Feb 2021",
-					tech: "Django, Sqlite, Echarts",
+					tech: "React, Django, Antd, Sqlite, Echarts",
 					href: "https://github.com/YizheZhang-Ervin/SharingBike",
 				},
 			],
@@ -449,7 +457,7 @@ export default {
 					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V2",
 				},
 				{
-					title: "Home Rent Website",
+					title: "Meteor Home - Home Rent Website",
 					time: "Jan 2020 - Apr 2020",
 					tech: "Angular, Express, MongoDB, Ng-Zorro",
 					href: "https://github.com/YizheZhang-Ervin/MeteorHome",
@@ -530,10 +538,15 @@ export default {
 				require("../assets/static/img/projects/1.png"),
 				require("../assets/static/img/projects/2.jpg"),
 				require("../assets/static/img/projects/3.png"),
+				require("../assets/static/img/projects/4.png"),
 			],
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
-			collapsePorject: "FinTech Algorithms",
+			collapseProject: [
+				"EZ Info",
+				"Personal Website V3.0",
+				"Hotel Database System",
+			],
 			collapseTechnology: "Development",
 		};
 	},
@@ -630,7 +643,7 @@ a {
 	width: 300px;
 }
 
-.menulink{
+.menulink {
 	display: inline-block;
 	width: 100%;
 }

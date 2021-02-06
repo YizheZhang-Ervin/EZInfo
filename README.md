@@ -1,17 +1,6 @@
 # EZ_Info
-EZ_Info  
   
-# Run
-cd frontend  
-npm install  
-npm run build  
-cd backend  
-workon env_develop  or source ./activate  
-move temp_static folder contents to static folder  
-pip install -r requirements.txt  
-python manage.py runserver  
-  
-# Features 
+## Features 
 - Welcome Page  
 - About me  
 - Visualization: Online Coding with output and charts  
@@ -20,16 +9,43 @@ python manage.py runserver
 - Tools: Translator   
 - Tools: Excel with IO/New/ComputeExpression  
 - Tools: VideoChat + Video Player with drag/drop + Status parameters  
-- Resources: Useful Links    
+- Resources: Useful Links  
   
-# Architecture  
-Front End: Vue CLI + Vue router + ElementUI  
-Node Modules: Echarts + PeerJS  
-Back End: Django RESTful + Mysql  
-Python Libs: translate  
+## Infrastructure  
+Front End: Vue + ElementUI + Axios + Echarts + PeerJS  
+Back End: Django RESTful + Mysql + translate  
   
-## BackEnd  
-### install django framework
+## Run
+cd frontend > npm install  
+npm run build   
+move files in backend/temp_static folder to backend/static folder  
+workon env_develop  or source ./activate  
+cd backend > pip install -r requirements.txt  
+python manage.py runserver  
+  
+## FrontEnd: Vue
+### start project  
+vue create xxPrj  
+  
+### modules
+npm install vue-cli  
+npm install vue-router  
+npm install element-ui  
+npm install echarts  
+npm install axios  
+  
+### other commands  
+vue ui -> set publicpath: /static/   
+npm install  
+npm serve   
+npm build  
+  
+## BackEnd: Django  
+### start project  
+django-admin startproject xxSite  
+python manage.py startapp xxApp  
+  
+### Libs
 pip install django  
 pip install djangorestframework  
 pip install django-cors-headers   
@@ -39,34 +55,19 @@ pip install pandas
 pip install translate  
 pip install tushare  
   
-### start project
-django-admin startproject xxProject  
-python manage.py startapp xxApp  
-
-### other commands
+### Database & static files  
+cd SharingBike  
 python manage.py collectstatic  
-python manage.py makemigrations  
+python manage.py makemigrations
 python manage.py migrate  
-python manage.py createsuperuser(ez-ez)  
+  
+### Backend Management  
+python manage.py createsuperuser(name:ez,password:ez)  
 python manage.py runserver  
-   
+Browser: http://127.0.0.1:8000/  
+  
 ### Dependency List  
-Dependency libs: pipreqs ./   
-
-## FrontEnd
-### install 
-npm install vue-cli  
-npm install vue-router  
-npm install element-ui  
-npm install echarts  
-npm install axios  
-  
-### start project  
-vue create xxPrj  
-  
-### other commands  
-vue ui -> set publicpath: /static/   
-npm install  
-npm serve   
-npm build  
+Virtual Env libs: pip freeze > requirements.txt   
+Dependency libs: pipreqs ./  
+pip install -r requirements.txt   
   
