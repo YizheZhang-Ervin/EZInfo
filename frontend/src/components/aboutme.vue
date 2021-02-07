@@ -132,7 +132,7 @@
 				<i class="el-icon-medal"></i> Certificates</el-divider
 			>
 			<section>
-				<el-collapse v-model="collapseCertificate">
+				<el-collapse v-model="collapseCertificate" accordion>
 					<el-collapse-item
 						:title="cer.title"
 						:name="cer.title"

@@ -11,8 +11,7 @@
         active-text-color="beige"
       >
         <el-menu-item index="welcome" style="min-width:15vw;text-align:center">
-          <i class="ezlogo"></i>
-          <router-link to="/">EZ Info</router-link>
+          <router-link to="/" class="menulink"><i class="ezlogo"></i>EZ Info</router-link>
         </el-menu-item>
         <el-submenu index="aboutme">
           <template slot="title">

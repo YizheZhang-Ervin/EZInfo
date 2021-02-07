@@ -25,7 +25,7 @@
 					icon="el-icon-video-camera"
 					>Use Camera</el-button
 				>
-        <el-button
+				<el-button
 					type="primary"
 					plain
 					round
@@ -97,7 +97,7 @@
 				Your Id:
 				<p v-text="selfid" style="display: inline"></p>
 				<br />
-				Video Url(click to drag to Video Area):
+				* Video Player:
 				<p
 					@dragstart="drag($event)"
 					draggable="true"
@@ -178,7 +178,7 @@ export default {
 			msg: "",
 			inputmsg: null,
 			url001:
-				"https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/89/78/6797889/6797889_da3-1-16.mp4?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1612286863&gen=playurl&os=kodobv&oi=978800370&trid=e879e59beb8a47a19728b10316f3f0e5h&platform=html5&upsig=d7a302c76c539ae1b6748312a3683704&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=524602686&logo=80000000",
+				"You can play video via dragging URL/mp4 and dropping to video area",
 			dataURL: {
 				protocol: "协议: " + window.location.protocol,
 				hostname: "主机地址名: " + window.location.hostname,

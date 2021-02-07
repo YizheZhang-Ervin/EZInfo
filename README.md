@@ -2,7 +2,7 @@
   
 ## Features 
 - Welcome Page  
-- About me  
+- About Me  
 - Visualization: Online Coding with output and charts  
 - Visualization: CandleStick Charts  
 - Tools: Geolocation with location  
@@ -27,21 +27,21 @@ python manage.py runserver
 ### start project  
 vue create xxPrj  
   
-### modules
+### Modules
 npm install vue-cli  
 npm install vue-router  
 npm install element-ui  
 npm install echarts  
 npm install axios  
   
-### other commands  
+### Other Commands  
 vue ui -> set publicpath: /static/   
 npm install  
 npm serve   
 npm build  
   
 ## BackEnd: Django  
-### start project  
+### Start Project  
 django-admin startproject xxSite  
 python manage.py startapp xxApp  
   
@@ -55,7 +55,7 @@ pip install pandas
 pip install translate  
 pip install tushare  
   
-### Database & static files  
+### Database & Static files  
 cd SharingBike  
 python manage.py collectstatic  
 python manage.py makemigrations
