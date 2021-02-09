@@ -5,6 +5,7 @@ from django.http import JsonResponse,QueryDict
 from django.views import View
 from pathlib import Path
 from django.shortcuts import render
+from ezinfo.visualization import initEngine
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -71,6 +72,24 @@ class codingApi(View):
             handler = self.http_method_not_allowed
         return handler(request, *args, **kwargs)
 
+    # sql terminal
+    def get(self,request):
+        try:
+            pkg = request.GET.get("pkg","")
+            engine = initEngine("fromDB")
+            cursor = engine.cursor()
+            sql = pkg
+            rows = cursor.execute(sql)  
+            data = cursor.fetchall()
+            rst = "\n".join([str(d) for d in data])
+            engine.commit()
+            cursor.close()
+            engine.close()
+            return JsonResponse({"result":rst})
+        except Exception:
+            return JsonResponse({"error":"error"})
+
+    # python terminal
     def post(self,request):
         try:
             jsonDict = eval(request.body)

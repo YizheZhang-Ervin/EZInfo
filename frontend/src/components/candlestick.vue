@@ -9,9 +9,7 @@
         <div slot="header" class="headerArea">
             <span>Shanghai Composite Index</span>
             <section>
-              <el-button class="btn"><a href="/api/ssec/web/">Refresh</a></el-button>
-              <el-button class="btn"><a href="/api/ssec/csv/">Import From CSV</a></el-button>
-              <el-button class="btn"><a href="/api/ssec/db/">Update From Web</a></el-button>
+              <el-button class="btn" @click="get">Refresh</el-button>
             </section>
         </div>
         <div id="echarts"></div>

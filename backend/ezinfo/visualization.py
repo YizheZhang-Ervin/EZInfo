@@ -32,7 +32,7 @@ def WebToDB(request):
     except Exception:
         pass
     finally:
-        return redirect('/home/')
+        return redirect('/manager/')
 
 def getDataFromDB(request):
     try:

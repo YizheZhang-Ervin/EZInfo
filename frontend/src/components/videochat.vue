@@ -157,7 +157,8 @@ export default {
 				debug: 2,
 				config: {
 					iceServers: [
-						{ url: "stun:stun1.l.google.com:19302" },
+						// { url: "stun:stun1.l.google.com:19302" },
+						{ url: "stun:0.peerjs.com:443" },
 						{
 							url: "turn:numb.viagenie.ca:3478",
 							username: "553887054@qq.com",

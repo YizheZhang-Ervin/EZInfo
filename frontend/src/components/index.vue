@@ -41,18 +41,9 @@
             <span slot="title">Projects</span></a>
           </el-menu-item>
         </el-submenu>
-        <el-submenu index="visual">
-          <template slot="title">
-            <i class="el-icon-data-line"></i>
-            <span class="menuwords">Visualization</span>
-          </template>
-          <el-menu-item index="coding">
-            <i class="el-icon-data-analysis"></i>Visual Coding
-          </el-menu-item>
-          <el-menu-item index="candlestick">
-            <i class="el-icon-pie-chart"></i>CandleStick Chart (SSEC)
-          </el-menu-item>
-        </el-submenu>
+        <el-menu-item index="candlestick">
+            <i class="el-icon-data-line"></i>Visualization (SSEC)
+        </el-menu-item>
         <el-submenu index="tool">
           <template slot="title"><i class="el-icon-s-tools"></i>
           <span class="menuwords">Tools</span>   
@@ -70,6 +61,11 @@
             <el-menu-item index="videochat-sender">Sender</el-menu-item>
             <el-menu-item index="videochat-receiver">Receiver</el-menu-item>
           </el-submenu>
+          <el-menu-item index="coding">
+            <router-link to="/manager" class="menulink">
+              <i class="el-icon-lock"></i>Manager
+            </router-link>
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="resources">
           <template slot="title">
@@ -84,7 +80,6 @@
     </header>
     <main class="main">
       <Translator v-show="translatorShow"></Translator>
-      <Coding v-if="codingShow"></Coding>
       <Videochat v-if="videochatShow" :room="roomtype"></Videochat>
       <Excel v-if="excelShow"></Excel>
       <Aboutme v-show="aboutmeShow"></Aboutme>
@@ -97,7 +92,6 @@
 
 <script>
 import Translator from "./translator.vue";
-import Coding from "./coding.vue";
 import Videochat from "./videochat.vue";
 import Excel from "./excel.vue";
 import Aboutme from "./aboutme.vue";
@@ -108,7 +102,6 @@ export default {
   name: "Index",
   components: {
     Translator,
-    Coding,
     Videochat,
     Excel,
     Aboutme,
@@ -121,7 +114,6 @@ export default {
       frameSrc: "",
       roomtype: "",
       translatorShow: false,
-      codingShow: false,
       videochatShow: false,
       excelShow: false,
       aboutmeShow: true,
@@ -139,7 +131,7 @@ export default {
           message: this.userLocation,
           type: 'success',
           duration: 5000,
-        });
+      });
     },
     sendNotification(position) {
       let latitude = position.coords.latitude.toFixed(2);
@@ -157,7 +149,6 @@ export default {
     changePage2(page){
       if(page=="aboutme"){
         this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = false;
         this.aboutmeShow = true;
@@ -170,23 +161,13 @@ export default {
     changePage(key) {
       if (key.substr(0, 7) == "aboutme") {
         this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = false;
         this.aboutmeShow = true;
         this.candlestickShow = false;
         this.linkShow = false;
-      } else if (key == "coding") {
+      }else if(key=="candlestick"){
         this.translatorShow = false;
-        this.codingShow = true;
-        this.videochatShow = false;
-        this.excelShow = false;
-        this.aboutmeShow = false;
-        this.candlestickShow = false;
-        this.linkShow = false;
-      } else if(key=="candlestick"){
-        this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = false;
         this.aboutmeShow = false;
@@ -194,7 +175,6 @@ export default {
         this.linkShow = false;
       }else if (key == "translator") {
         this.translatorShow = true;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = false;
         this.aboutmeShow = false;
@@ -202,7 +182,6 @@ export default {
         this.linkShow = false;
       } else if (key == "excel") {
         this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = true;
         this.aboutmeShow = false;
@@ -215,7 +194,6 @@ export default {
           this.roomtype = true;
         }
         this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = true;
         this.excelShow = false;
         this.aboutmeShow = false;
@@ -223,7 +201,6 @@ export default {
         this.linkShow = false;
       }else if(key=="link"){
         this.translatorShow = false;
-        this.codingShow = false;
         this.videochatShow = false;
         this.excelShow = false;
         this.aboutmeShow = false;
