@@ -9,7 +9,7 @@
 						<el-input v-model="loginForm.username"></el-input>
 					</el-form-item>
 					<el-form-item label="Password">
-						<el-input v-model="loginForm.password"></el-input>
+						<el-input v-model="loginForm.password" show-password></el-input>
 					</el-form-item>
 					<el-form-item>
 						<el-button plain round type="primary" @click="changePart">Login</el-button>

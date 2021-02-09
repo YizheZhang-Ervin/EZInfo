@@ -15,6 +15,7 @@
 				<el-button class="btn" size="small" icon="el-icon-caret-right" round @click="post">Run Code</el-button>
 				<el-button class="btn" size="small" icon="el-icon-caret-right" round @click="clear('codes')">Clear Code</el-button>
 				<el-button class="btn" size="small" icon="el-icon-caret-right" round @click="clear('output')">Clear Output</el-button>
+				<el-button class="btn" size="small" icon="el-icon-caret-right" round @click="clear('example')">Example Codes</el-button>
 			</section>
 			<textarea id="input" class="inputArea w50" v-model="input" @keydown="cancelTab($event)"></textarea>
 		</section>
@@ -65,6 +66,12 @@ export default {
 					},
 					function(err) {
 						console.log(err.data);
+						this.$notify({
+							title: "Notification",
+							message: "Wrong Codes",
+							type: "warning",
+							duration: 5000,
+						});
 					}
 				);
 		},
@@ -108,6 +115,8 @@ export default {
 				this.input = "class Run:\n  def run():\n    return {'x':[],'y':[],'y2':[]}";
 			} else if (content == "output") {
 				this.output = "";
+			}else if(content=="example"){
+				this.input = `class Run:\n  def run():\n    from datetime import datetime\n    from pandas_datareader import DataReader\n    stock="TGT"\n    t1=datetime(2020,1,1) \n    t2=datetime(2021,2,5)\n    data=DataReader(stock,"yahoo",t1,t2)\n    x = list(map(lambda x:str(x.date()),data.index))\n    y = list(map(float,data["Adj Close"].values))\n    y2 = list(map(float,data["Open"].values))\n    return {"x":x,"y":y,"y2":y2}`;
 			}
 		},
 		cancelTab(e) {

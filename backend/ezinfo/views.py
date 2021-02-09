@@ -91,22 +91,22 @@ class codingApi(View):
 
     # python terminal
     def post(self,request):
-        try:
-            jsonDict = eval(request.body)
-            inputs = jsonDict['input']
-            # 写入文件
-            f = open(f'{BASE_DIR}/online_codes.py', 'w+')
-            f.write(eval(inputs))
-            f.close()
-            # 重新导入文件中函数
-            import ezinfo.online_codes as oc
-            reload(oc)
-            # 返回运行结果
-            temp = oc.Run.run()
-            if type(temp) == dict:
-                rst = {"x":temp.get("x",[]),"y":temp.get("y",[]),"y2":temp.get("y2",[]),"other":temp}
-            else:
-                rst = {"other":temp}
-            return JsonResponse({"result":rst})
-        except Exception:
-            return JsonResponse({"error":"error"})
+        # try:
+        jsonDict = eval(request.body)
+        inputs = jsonDict['input']
+        # 写入文件
+        f = open(f'{BASE_DIR}/online_codes.py', 'w+')
+        f.write(eval(inputs))
+        f.close()
+        # 重新导入文件中函数
+        import ezinfo.online_codes as oc
+        reload(oc)
+        # 返回运行结果
+        temp = oc.Run.run()
+        if type(temp) == dict:
+            rst = {"x":temp.get("x",[]),"y":temp.get("y",[]),"y2":temp.get("y2",[]),"other":temp}
+        else:
+            rst = {"other":temp}
+        return JsonResponse({"result":rst})
+        # except Exception:
+        #     return JsonResponse({"error":"error"})
