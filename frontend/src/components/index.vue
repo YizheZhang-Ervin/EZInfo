@@ -42,7 +42,7 @@
           </el-menu-item>
         </el-submenu>
         <el-menu-item index="candlestick">
-            <i class="el-icon-data-line"></i>Visualization (SSEC)
+            <i class="el-icon-data-line"></i><span class="menuwords">Visualization (SSEC)</span>
         </el-menu-item>
         <el-submenu index="tool">
           <template slot="title"><i class="el-icon-s-tools"></i>

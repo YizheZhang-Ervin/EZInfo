@@ -175,14 +175,17 @@ export default {
 					this.cmdTitle = "Super SQL v1.0";
 					this.dbBtn = true;
                     this.input = ">>";
+					this.output="";
 				} else if (key == "js") {
 					this.cmdTitle = "Super JavaScript v1.0";
 					this.dbBtn = false;
                     this.input = ">>";
+					this.output="";
 				} else if (key == "html") {
 					this.cmdTitle = "Super HTML v1.0";
 					this.dbBtn = false;
                     this.input = ">>";
+					this.output="";
 				}
 			}
 		},
