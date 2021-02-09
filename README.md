@@ -2,13 +2,13 @@
   
 ## Features 
 - Welcome Page  
-- About Me  
-- Visualization: Online Coding with output and charts  
+- About Me   
 - Visualization: CandleStick Charts  
 - Tools: Geolocation with location  
 - Tools: Translator   
 - Tools: Excel with IO/New/ComputeExpression  
 - Tools: VideoChat + Video Player with drag/drop + Status parameters  
+- Tools: Manager login with Terminals of Python/Sql(update stock data)/JavaScript/HTML  
 - Resources: Useful Links  
   
 ## Infrastructure  
