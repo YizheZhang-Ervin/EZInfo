@@ -114,6 +114,12 @@ export default {
 				(response) => {
 					if (response.data.error == "error") {
 						console.log("backend error");
+						this.$notify({
+							title: "Notification",
+							message: "Wrong Codes",
+							type: "warning",
+							duration: 5000,
+						});
 					} else {
 						this.output = `<pre>${response.data.result}</pre>`;
 					}
@@ -135,6 +141,12 @@ export default {
 				(response) => {
 					if (response.data.error == "error") {
 						console.log("backend error");
+						this.$notify({
+							title: "Notification",
+							message: "Wrong Codes",
+							type: "warning",
+							duration: 5000,
+						});
 					} else {
 						this.output = `<pre>${response.data.result}</pre>`;
 					}
