@@ -524,10 +524,9 @@ export default {
 			],
 			carousel: [
 				require("../assets/static/img/projects/1.png"),
-				require("../assets/static/img/projects/2.jpg"),
+				require("../assets/static/img/projects/2.png"),
 				require("../assets/static/img/projects/3.png"),
 				require("../assets/static/img/projects/4.png"),
-				require("../assets/static/img/projects/5.png"),
 			],
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
