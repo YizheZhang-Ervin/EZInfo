@@ -388,12 +388,6 @@ export default {
 					href: "https://github.com/YizheZhang-Ervin/EZInfo",
 				},
 				{
-					title: "YeStock",
-					time: "Jan 2021 - April 2021",
-					tech: "Vue, Flask, ElementUI, Echarts",
-					href: "https://github.com/YizheZhang-Ervin/FinTech_YeStock",
-				},
-				{
 					title: "EGGroup",
 					time: "Jan 2021 - April 2021",
 					tech: "Vue, Express, Mysql, ElementUI",
@@ -457,6 +451,18 @@ export default {
 					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V2",
 				},
 				{
+					title: "FinTech - Gold Visualization",
+					time: "Mar 2020 - Apr 2020",
+					tech: "Tornado, Bootstrap, Sqlite",
+					href: "https://github.com/YizheZhang-Ervin/FinTech_BEA",
+				},
+				{
+					title: "Personal Website V1.0",
+					time: "Jan 2020 - Apr 2020",
+					tech: "Django, Mysql",
+					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V1",
+				},
+				{
 					title: "Meteor Home - Home Rent Website",
 					time: "Jan 2020 - Apr 2020",
 					tech: "Angular, Express, MongoDB, Ng-Zorro",
@@ -475,24 +481,6 @@ export default {
 					tech:
 						"Python (Jupyter Notebook, Numpy, Pandas, Scipy, Sklearn, Matplotlib)",
 					href: "",
-				},
-				{
-					title: "Harrier Web Hunter",
-					time: "Mar 2020 - Apr 2020",
-					tech: "Flask, requests",
-					href: "https://github.com/YizheZhang-Ervin/Harrier",
-				},
-				{
-					title: "FinTech - Gold Visualization",
-					time: "Mar 2020 - Apr 2020",
-					tech: "Tornado, Bootstrap, Sqlite",
-					href: "https://github.com/YizheZhang-Ervin/FinTech_BEA",
-				},
-				{
-					title: "Personal Website V1.0",
-					time: "Jan 2020 - Mar 2020",
-					tech: "Django, Mysql",
-					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V1",
 				},
 			],
 			project2019: [
@@ -539,6 +527,7 @@ export default {
 				require("../assets/static/img/projects/2.jpg"),
 				require("../assets/static/img/projects/3.png"),
 				require("../assets/static/img/projects/4.png"),
+				require("../assets/static/img/projects/5.png"),
 			],
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
