@@ -2,11 +2,11 @@
   <section class="whole">
     <header>
       <i class="ezlogo"></i>
-      <p>Ervin Zhang</p>
+      <p>EZ Info</p>
     </header>
     <main>
         <p class="name">Hi, I am Yizhe Zhang</p>
-        <p class="intro">A Front End &amp; Full Stack Developer</p>
+        <p class="intro">A Full Stack Hacker</p>
         <router-link to="/home"><el-button plain class="btn" >Take A Look</el-button></router-link>
     </main>
     <footer>
