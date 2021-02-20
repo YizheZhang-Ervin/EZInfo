@@ -6,7 +6,7 @@
     </header>
     <main>
         <p class="name">Hi, I am Yizhe Zhang</p>
-        <p class="intro">A Full Stack Hacker</p>
+        <p class="intro">Python | JavaScript | FinTech</p>
         <router-link to="/home"><el-button plain class="btn" >Take A Look</el-button></router-link>
     </main>
     <footer>

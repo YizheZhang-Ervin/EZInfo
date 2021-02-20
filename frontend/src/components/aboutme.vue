@@ -237,8 +237,8 @@ export default {
 			summary: [
 				{
 					title: "Hard Power",
-					detail: `Proficient in Front-End development of Websites.
-                    Be familiar with mainstream frameworks such as React/Angular/Vue(Front-End), Django/Express(Back-End).
+					detail: `A full stack engineer who is proficient in Front-End and Back-End development of Websites.
+                    Be familiar with mainstream frameworks such as React/Angular/Vue/RN(Front-End), Django/Express(Back-End).
                     Developed several individual&team projects.
                     Good at optimizing user experience and improving project quality through data analysis.`,
 					tags:[{type:"",label:"Meteor Home Rent"},
