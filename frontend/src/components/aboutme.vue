@@ -382,16 +382,22 @@ export default {
 			],
 			project2021: [
 				{
+					title: "EGGroup AI",
+					time: "Feb 2021 - March 2021",
+					tech: "React, Flask RESTful",
+					href: "https://github.com/YizheZhang-Ervin/EGGroup_AI",
+				},
+				{
 					title: "EZ Info",
 					time: "Jan 2021 - Future",
 					tech: "Vue, Django, Echarts, ElementUI, peerjs",
 					href: "https://github.com/YizheZhang-Ervin/EZInfo",
 				},
 				{
-					title: "EGGroup",
+					title: "EGGroup WebGL",
 					time: "Jan 2021 - April 2021",
 					tech: "Vue, Express, Mysql, ElementUI",
-					href: "https://github.com/YizheZhang-Ervin/EGGroup_V2",
+					href: "https://github.com/YizheZhang-Ervin/EGGroup_WebGL",
 				},
 				{
 					title: "Sharing Bike System",
