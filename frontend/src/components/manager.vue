@@ -31,6 +31,7 @@
 					<el-menu-item index="sql"><i class="el-icon-key"></i>SQL</el-menu-item>
 					<el-menu-item index="js"><i class="el-icon-key"></i>JavaScript</el-menu-item>
 					<el-menu-item index="html"><i class="el-icon-key"></i>HTML</el-menu-item>
+					<el-menu-item index="linux"><i class="el-icon-key"></i>Linux</el-menu-item>
 				</el-submenu>
 				<el-menu-item index="2">
 					<router-link to="/home" class="menulink">
@@ -99,6 +100,8 @@ export default {
 					this.output = eval(sentence);
 				} else if (this.cmdTitle == "Super HTML v1.0") {
 					this.output = sentence;
+				} else if (this.cmdTitle == "Super Linux v1.0") {
+					this.getOS();
 				}
 			} catch (err) {
 				this.$notify({
@@ -112,6 +115,32 @@ export default {
 		get: function() {
 			axios.get(`api/coding/?pkg=${this.input.substr(2)}`).then(
 				(response) => {
+					if (response.data.error == "error") {
+						console.log("backend error");
+						this.$notify({
+							title: "Notification",
+							message: "Wrong Codes",
+							type: "warning",
+							duration: 5000,
+						});
+					} else {
+						this.output = `<pre>${response.data.result}</pre>`;
+					}
+				},
+				(err) => {
+					console.log(err.data);
+					this.$notify({
+						title: "Notification",
+						message: "Wrong Codes",
+						type: "warning",
+						duration: 5000,
+					});
+				}
+			);
+		},
+		getOS: function() {
+			axios.post(`api/coding2/`, {input: JSON.stringify(this.input.substr(2)),})
+			.then((response) => {
 					if (response.data.error == "error") {
 						console.log("backend error");
 						this.$notify({
@@ -195,6 +224,11 @@ export default {
 					this.output="";
 				} else if (key == "html") {
 					this.cmdTitle = "Super HTML v1.0";
+					this.dbBtn = false;
+                    this.input = ">>";
+					this.output="";
+				} else if (key == "linux") {
+					this.cmdTitle = "Super Linux v1.0";
 					this.dbBtn = false;
                     this.input = ">>";
 					this.output="";
