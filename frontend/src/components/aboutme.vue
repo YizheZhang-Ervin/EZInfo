@@ -58,7 +58,7 @@
 					href="https://www.zhihu.com/people/yizhezhang"
 					><el-menu-item index="zhihu">Zhihu</el-menu-item></a
 				>
-				<a href="/ezapp.apk" download="ezapp.apk"
+				<a href="/static/ezapp.apk" download="ezapp.apk"
 					><el-menu-item index="apk">Personal App</el-menu-item></a
 				>
 			</el-submenu>
