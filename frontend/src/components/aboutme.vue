@@ -382,10 +382,10 @@ export default {
 			],
 			project2021: [
 				{
-					title: "EGGroup AI",
+					title: "EZ Intelligence",
 					time: "Feb 2021 - March 2021",
-					tech: "React, Flask RESTful",
-					href: "https://github.com/YizheZhang-Ervin/EGGroup_AI",
+					tech: "React, Flask RESTful, Sqlite, Antd, Echarts",
+					href: "https://github.com/YizheZhang-Ervin/EZIntelligence",
 				},
 				{
 					title: "EZ Info",
