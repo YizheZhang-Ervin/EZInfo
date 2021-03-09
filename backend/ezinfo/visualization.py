@@ -66,8 +66,11 @@ def CSVToDB(request):
         return redirect('/home/')
 
 def DBToCSV():
-    engine = initEngine("fromDB")
-    # engine = pymysql.connect(host='127.0.0.1',port=3306,user='root',password="root001",database='djangodb')
+    # engine = initEngine("fromDB")
+    engine = pymysql.connect(host='127.0.0.1',port=3306,user='root',password="root001",database='djangodb')
     sql = "SELECT date,open,close,low,high,volume FROM shindex order by date ASC"
     data = pd.read_sql(sql,engine)
     data.to_csv("stockData.csv",index=0)
+    print("DONE")
+
+# DBToCSV()

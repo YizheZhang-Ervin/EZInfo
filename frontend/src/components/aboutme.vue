@@ -243,7 +243,7 @@ export default {
                     Good at optimizing user experience and improving project quality through data analysis.`,
 					tags:[{type:"",label:"Meteor Home Rent"},
 					{type:"success",label:"Sharing Bike System"},
-					{type:"info",label:"EZ Info Blog"}]
+					{type:"info",label:"Info Blog"}]
 				},
 				{
 					title: "Soft Power",
@@ -382,16 +382,22 @@ export default {
 			],
 			project2021: [
 				{
-					title: "EZ Intelligence",
-					time: "Feb 2021 - March 2021",
-					tech: "React, Flask RESTful, Sqlite, Antd, Echarts",
-					href: "https://github.com/YizheZhang-Ervin/EZIntelligence",
+					title: "EZFintech",
+					time: "March 2021 - Future",
+					tech: "Numpy, Pandas, Matplotlib, Requests, Mplfinance",
+					href: "https://github.com/YizheZhang-Ervin/EZFintech",
 				},
 				{
-					title: "EZ Info",
+					title: "FinTech Intelligence",
+					time: "Feb 2021 - March 2021",
+					tech: "React, Flask RESTful, Sqlite, Antd, Echarts",
+					href: "https://github.com/YizheZhang-Ervin/FinTech_Intelligence",
+				},
+				{
+					title: "Info Blog",
 					time: "Jan 2021 - Future",
 					tech: "Vue, Django, Echarts, ElementUI, peerjs",
-					href: "https://github.com/YizheZhang-Ervin/EZInfo",
+					href: "https://github.com/YizheZhang-Ervin/InfoBlog",
 				},
 				{
 					title: "EGGroup WebGL",
@@ -448,7 +454,7 @@ export default {
 					title: "Cloud Storage App",
 					time: "Apr 2020 - May 2020",
 					tech: "Django, Bootstrap, Sqlite",
-					href: "https://github.com/YizheZhang-Ervin/IMISCloud",
+					href: "https://github.com/YizheZhang-Ervin/App_Web_IMISCloud",
 				},
 				{
 					title: "Personal Website V2.0",
@@ -537,7 +543,7 @@ export default {
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
 			collapseProject: [
-				"EZ Info",
+				"EZFintech",
 				"Personal Website V3.0",
 				"Hotel Database System",
 			],
