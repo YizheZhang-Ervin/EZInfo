@@ -382,7 +382,7 @@ export default {
 			],
 			project2021: [
 				{
-					title: "EZFintech",
+					title: "EZFintech (Pypi)",
 					time: "March 2021 - Future",
 					tech: "Numpy, Pandas, Matplotlib, Requests, Mplfinance",
 					href: "https://github.com/YizheZhang-Ervin/EZFintech",
@@ -416,7 +416,7 @@ export default {
 				{
 					title: "Personal Website V3.0",
 					time: "Oct 2020 - Feb 2021",
-					tech: "Angular, Django, Sqlite",
+					tech: "React, Django, Sqlite",
 					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V3",
 				},
 				{
@@ -539,6 +539,7 @@ export default {
 				require("../assets/static/img/projects/2.png"),
 				require("../assets/static/img/projects/3.png"),
 				require("../assets/static/img/projects/4.png"),
+				require("../assets/static/img/projects/5.png"),
 			],
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
