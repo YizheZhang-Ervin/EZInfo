@@ -388,6 +388,12 @@ export default {
 					href: "https://github.com/YizheZhang-Ervin/EZFintech",
 				},
 				{
+					title: "Archer Alpha 2D Game",
+					time: "Jan 2021 - April 2021",
+					tech: "Unity (Click link to see on YouTube)",
+					href: "https://www.youtube.com/channel/UCyymzd56ArpDeyhKaPuBhGw",
+				},
+				{
 					title: "FinTech Intelligence",
 					time: "Feb 2021 - March 2021",
 					tech: "React, Flask RESTful, Sqlite, Antd, Echarts",
@@ -544,7 +550,7 @@ export default {
 			navCollapse: true,
 			collapseCertificate: "Data Analytics Consulting Virtual Internship",
 			collapseProject: [
-				"EZFintech",
+				"EZFintech (Pypi)",
 				"Personal Website V3.0",
 				"Hotel Database System",
 			],
