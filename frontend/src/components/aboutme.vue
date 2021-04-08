@@ -384,14 +384,26 @@ export default {
 				{
 					title: "EZFintech (Pypi)",
 					time: "March 2021 - Future",
-					tech: "Numpy, Pandas, Matplotlib, Requests, Mplfinance",
+					tech: "Python Lib with stock Data/Analysis/Knowledge/Visualization/Model",
 					href: "https://github.com/YizheZhang-Ervin/EZFintech",
 				},
 				{
+					title: "Info Blog",
+					time: "Jan 2021 - Future",
+					tech: "Vue, Django, Echarts, ElementUI, peerjs, H5App",
+					href: "https://github.com/YizheZhang-Ervin/InfoBlog",
+				},
+				{
 					title: "Archer Alpha 2D Game",
-					time: "Jan 2021 - April 2021",
+					time: "March 2021 - April 2021",
 					tech: "Unity (Click link to see on YouTube)",
 					href: "https://www.youtube.com/channel/UCyymzd56ArpDeyhKaPuBhGw",
+				},
+				{
+					title: "Nodebook",
+					time: "Feb 2021 - March 2021",
+					tech: "Vue, Express, Mysql, Axios, ElementUI, http, vm, child_process",
+					href: "https://github.com/YizheZhang-Ervin/Nodebook",
 				},
 				{
 					title: "FinTech Intelligence",
@@ -400,14 +412,8 @@ export default {
 					href: "https://github.com/YizheZhang-Ervin/FinTech_Intelligence",
 				},
 				{
-					title: "Info Blog",
-					time: "Jan 2021 - Future",
-					tech: "Vue, Django, Echarts, ElementUI, peerjs",
-					href: "https://github.com/YizheZhang-Ervin/InfoBlog",
-				},
-				{
 					title: "EGGroup WebGL",
-					time: "Jan 2021 - April 2021",
+					time: "Jan 2021 - Feb 2021",
 					tech: "Vue, Express, Mysql, ElementUI",
 					href: "https://github.com/YizheZhang-Ervin/EGGroup_WebGL",
 				},
@@ -421,7 +427,7 @@ export default {
 			project2020: [
 				{
 					title: "Personal Website V3.0",
-					time: "Oct 2020 - Feb 2021",
+					time: "Oct 2020 - Jan 2021",
 					tech: "React, Django, Sqlite",
 					href: "https://github.com/YizheZhang-Ervin/EasyEZ_V3",
 				},
